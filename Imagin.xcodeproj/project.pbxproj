@@ -13,6 +13,8 @@
 		11061BD325F27F90008327DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11061BD125F27F90008327DD /* Main.storyboard */; };
 		11061BD525F27F92008327DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11061BD425F27F92008327DD /* Assets.xcassets */; };
 		11061BD825F27F92008327DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11061BD625F27F92008327DD /* LaunchScreen.storyboard */; };
+		11061BE125F283C9008327DD /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061BE025F283C9008327DD /* PhotoController.swift */; };
+		117CE78E2602EB7700F9582B /* ResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117CE78D2602EB7700F9582B /* ResultController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		11061BD425F27F92008327DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11061BD725F27F92008327DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11061BD925F27F92008327DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11061BE025F283C9008327DD /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
+		117CE78D2602EB7700F9582B /* ResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				11061BD425F27F92008327DD /* Assets.xcassets */,
 				11061BD625F27F92008327DD /* LaunchScreen.storyboard */,
 				11061BD925F27F92008327DD /* Info.plist */,
+				11061BE025F283C9008327DD /* PhotoController.swift */,
+				117CE78D2602EB7700F9582B /* ResultController.swift */,
 			);
 			path = Imagin;
 			sourceTree = "<group>";
@@ -139,6 +145,8 @@
 			files = (
 				11061BD025F27F90008327DD /* ViewController.swift in Sources */,
 				11061BCC25F27F90008327DD /* AppDelegate.swift in Sources */,
+				117CE78E2602EB7700F9582B /* ResultController.swift in Sources */,
+				11061BE125F283C9008327DD /* PhotoController.swift in Sources */,
 				11061BCE25F27F90008327DD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
