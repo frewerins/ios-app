@@ -8,18 +8,28 @@
 import UIKit
 
 class PhotoController: UIViewController {
+    /*func postIMage() {
+        let json : [String: Any]
+        let jsonData =
+        let url = URL(string: "http://google.com") //ссылка на пост запрос на сервер
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+    }*/
+    
     let imagePicker = UIImagePickerController()
+    
     @IBOutlet weak var nextPage: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-        UIView.transition(with: photoFromUser, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
+            /*UIView.transition(with: photoFromUser, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
             self.photoFromUser.isHidden = true
-        }, completion: { _ in })
+        }, completion: { _ in })*/
         UIView.transition(with: nextPage, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
             self.nextPage.isHidden = true
         }, completion: { _ in })
-        // Do any additional setup after loading the view.
     }
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBAction func addPhoto(_ sender: Any) {
@@ -51,7 +61,7 @@ extension PhotoController: UIImagePickerControllerDelegate, UINavigationControll
             UIView.transition(with: photoFromUser, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
                 self.photoFromUser.isHidden = false
             }, completion: { _ in })
-            addPhotoButton.setTitle("Choose Another Photo", for: .normal)
+            addPhotoButton.setTitle("Another Photo", for: .normal)
             UIView.transition(with: nextPage, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
                 self.nextPage.isHidden = false
             }, completion: { _ in })
