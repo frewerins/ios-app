@@ -19,11 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PKo-ZZ-RzA">
-                                <rect key="frame" x="191" y="432" width="32" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="PKo-ZZ-RzA" secondAttribute="height" multiplier="1:1" id="mvy-df-fsf"/>
-                                    <constraint firstAttribute="width" constant="32" id="wWi-Cl-vBm"/>
-                                </constraints>
+                                <rect key="frame" x="191" y="433" width="32" height="30"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
                                     <segue destination="0Zb-HJ-mZB" kind="show" id="f8p-qc-bQ1"/>
@@ -78,7 +74,7 @@
                                 <rect key="frame" x="191" y="727.5" width="32" height="30"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <segue destination="rSn-xk-wPc" kind="show" id="UzW-Gu-W3i"/>
+                                    <action selector="sendPhotoAction:" destination="0Zb-HJ-mZB" eventType="touchUpInside" id="9rg-1r-hOw"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -132,7 +128,7 @@
         <!--Result View Controller-->
         <scene sceneID="1zK-mf-Cg6">
             <objects>
-                <viewController id="rSn-xk-wPc" customClass="ResultViewController" customModule="Imagin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResultViewController" id="rSn-xk-wPc" customClass="ResultViewController" customModule="Imagin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jMY-mY-LUL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

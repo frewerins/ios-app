@@ -15,6 +15,7 @@
 		11061BD825F27F92008327DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11061BD625F27F92008327DD /* LaunchScreen.storyboard */; };
 		11061BE125F283C9008327DD /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061BE025F283C9008327DD /* PhotoController.swift */; };
 		117CE78E2602EB7700F9582B /* ResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117CE78D2602EB7700F9582B /* ResultController.swift */; };
+		11E0FFD3261751A4001EF67D /* HTTPCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E0FFD2261751A4001EF67D /* HTTPCommunication.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		11061BD925F27F92008327DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11061BE025F283C9008327DD /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
 		117CE78D2602EB7700F9582B /* ResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultController.swift; sourceTree = "<group>"; };
+		11E0FFD2261751A4001EF67D /* HTTPCommunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPCommunication.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				11061BD925F27F92008327DD /* Info.plist */,
 				11061BE025F283C9008327DD /* PhotoController.swift */,
 				117CE78D2602EB7700F9582B /* ResultController.swift */,
+				11E0FFD2261751A4001EF67D /* HTTPCommunication.swift */,
 			);
 			path = Imagin;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 			files = (
 				11061BD025F27F90008327DD /* ViewController.swift in Sources */,
 				11061BCC25F27F90008327DD /* AppDelegate.swift in Sources */,
+				11E0FFD3261751A4001EF67D /* HTTPCommunication.swift in Sources */,
 				117CE78E2602EB7700F9582B /* ResultController.swift in Sources */,
 				11061BE125F283C9008327DD /* PhotoController.swift in Sources */,
 				11061BCE25F27F90008327DD /* SceneDelegate.swift in Sources */,
