@@ -11,6 +11,7 @@ class IntroViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     @IBOutlet weak var PageController: UIPageControl!

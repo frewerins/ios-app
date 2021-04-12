@@ -34,8 +34,7 @@ class IntroPageViewController: UIPageViewController {
     }()
 
     private func newIntroViewController(number: Int) -> UIViewController {
-        return UIStoryboard(name: "Main", bundle: nil) .
-            instantiateViewController(withIdentifier: "Intro\(number)")
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Intro\(number)")
     }
 }
 
@@ -48,11 +47,9 @@ extension IntroPageViewController: UIPageViewControllerDataSource {
         }
                 
         let previousIndex = viewControllerIndex - 1
-                
-                // User is on the first view controller and swiped left to loop to
-                // the last view controller.
+        
         guard previousIndex >= 0 else {
-            return orderedViewControllers.first
+            return nil
         }
                 
         guard orderedViewControllers.count > previousIndex else {
@@ -72,7 +69,7 @@ extension IntroPageViewController: UIPageViewControllerDataSource {
         let orderedViewControllersCount = orderedViewControllers.count
                 
         guard orderedViewControllersCount != nextIndex else {
-            return orderedViewControllers.first
+            return nil
         }
                 
         guard orderedViewControllersCount > nextIndex else {
@@ -93,7 +90,7 @@ extension IntroPageViewController: UIPageViewControllerDelegate {
         if let firstViewController = viewControllers?.first,
            let index = orderedViewControllers.firstIndex(of: firstViewController) {
             introDelegate?.introPageViewController(introPageViewController: self,
-                                                   didUpdatePageCount: index)
+                                                   didUpdatePageIndex: index)
         }
     }
     

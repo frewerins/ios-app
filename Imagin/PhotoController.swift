@@ -14,6 +14,8 @@ class PhotoController: UIViewController {
     
     @IBOutlet weak var nextPage: UIButton!
     
+    @IBOutlet weak var actionLabel: UILabel!
+    @IBOutlet weak var actionDescr: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
@@ -55,17 +57,34 @@ class PhotoController: UIViewController {
         view.addSubview(activityView)
         return activityView
     }()
+    
     func beforeSeinding() {
-        UIView.transition(with: nextPage, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
-            self.nextPage.isHidden = true
+        UIView.transition(with: addPhotoButton, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
+            self.addPhotoButton.isHidden = true
         }, completion: { _ in })
         
         self.activityView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.activityView.centerXAnchor.constraint(equalTo: self.nextPage.centerXAnchor),
+            self.activityView.centerXAnchor.constraint(equalTo: self.addPhotoButton.centerXAnchor),
             self.activityView.centerYAnchor.constraint(equalTo:
-                    self.nextPage.centerYAnchor)
+                    self.addPhotoButton.centerYAnchor)
         ])
+        UIView.transition(with: nextPage, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
+            let attributes: [NSAttributedString.Key: Any] = [
+                .foregroundColor: UIColor.gray
+            ]
+            let newTitle = NSAttributedString(string: "Uploading...", attributes: attributes)
+            //let newTitle = self.nextPage.currentAttributedTitle
+            //newTitle?.setValue("Uploading", forKey: "string")
+                self.nextPage.setAttributedTitle(newTitle, for: .normal)
+        }, completion: { _ in })
+        
+        UIView.transition(with: actionLabel, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
+            self.actionLabel.text = "Photo processing"
+        }, completion: { _ in })
+        UIView.transition(with: actionDescr, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
+            self.actionDescr.text = "Calculate your color type and select clothes"
+        }, completion: { _ in })
     }
     
     func sendPhoto() {
@@ -88,7 +107,7 @@ class PhotoController: UIViewController {
             guard let json = String(data: data, encoding: String.Encoding.utf8) else { print("Invalid json")
                 return
             }
-            print("JSON from server: ", json)
+            //print("JSON from server: ", json)
                     
             do {
                /* let jsonObjectAny: Any = try JSONSerialization.jsonObject(with: data, options: [])
@@ -118,13 +137,19 @@ extension PhotoController: UIImagePickerControllerDelegate, UINavigationControll
         if let pickedPhoto = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             photo = pickedPhoto
             photoFromUser.image = pickedPhoto
+            photoFromUser.layer.borderWidth = 3.0
+            photoFromUser.layer.borderColor = CGColor(red: 90.0/255.0, green: 200.0/255.0, blue: 251.0/255.0, alpha: 1.0)
+            photoFromUser.layer.cornerRadius = 10
+            
             print("get photo!!")
             UIView.transition(with: photoFromUser, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
                 self.photoFromUser.isHidden = false
             }, completion: { _ in })
-            addPhotoButton.setTitle("Another Photo", for: .normal)
             UIView.transition(with: nextPage, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
                 self.nextPage.isHidden = false
+            }, completion: { _ in })
+            UIView.transition(with: addPhotoButton, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
+                self.addPhotoButton.setTitle("Another Photo", for: .normal)
             }, completion: { _ in })
         }
         dismiss(animated: true, completion: nil)
