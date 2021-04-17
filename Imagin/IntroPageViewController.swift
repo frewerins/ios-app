@@ -21,9 +21,9 @@ class IntroPageViewController: UIPageViewController {
                    direction: .forward,
                    animated: true,
                    completion: nil)
-           }
+        }
         
-        introDelegate?.introPageViewController(introPageViewController: self,
+        introDelegate?.update(introPageViewController: self,
             didUpdatePageCount: orderedViewControllers.count)
         }
     
@@ -89,7 +89,7 @@ extension IntroPageViewController: UIPageViewControllerDelegate {
         transitionCompleted completed: Bool) {
         if let firstViewController = viewControllers?.first,
            let index = orderedViewControllers.firstIndex(of: firstViewController) {
-            introDelegate?.introPageViewController(introPageViewController: self,
+            introDelegate?.update(introPageViewController: self,
                                                    didUpdatePageIndex: index)
         }
     }
@@ -98,22 +98,10 @@ extension IntroPageViewController: UIPageViewControllerDelegate {
 
 protocol IntroPageViewControllerDelegate: class {
     
-    /**
-     Called when the number of pages is updated.
-     
-     - parameter tutorialPageViewController: the TutorialPageViewController instance
-     - parameter count: the total number of pages.
-     */
-    func introPageViewController(introPageViewController: IntroPageViewController,
+    func update(introPageViewController: IntroPageViewController,
         didUpdatePageCount count: Int)
     
-    /**
-     Called when the current index is updated.
-     
-     - parameter tutorialPageViewController: the TutorialPageViewController instance
-     - parameter index: the index of the currently visible page.
-     */
-    func introPageViewController(introPageViewController: IntroPageViewController,
+    func update(introPageViewController: IntroPageViewController,
         didUpdatePageIndex index: Int)
     
 }

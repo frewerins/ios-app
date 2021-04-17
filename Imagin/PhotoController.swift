@@ -107,7 +107,7 @@ class PhotoController: UIViewController {
             guard let json = String(data: data, encoding: String.Encoding.utf8) else { print("Invalid json")
                 return
             }
-            //print("JSON from server: ", json)
+            print("JSON from server: ", json)
                     
             do {
                /* let jsonObjectAny: Any = try JSONSerialization.jsonObject(with: data, options: [])
