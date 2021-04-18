@@ -351,7 +351,6 @@
         <!--Navigation Controller-->
         <scene sceneID="atr-lS-l7b">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ceB-Lr-qwy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="iJD-35-jZQ" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="backPointer" backIndicatorTransitionMaskImage="backPointer" id="W2c-sf-YdU">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>
@@ -370,8 +369,53 @@
                         <segue destination="QQ8-GH-YYI" kind="relationship" relationship="rootViewController" id="OF7-eg-0vR"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ceB-Lr-qwy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-986" y="2106"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="DfN-3e-N7t">
+            <objects>
+                <viewController id="dpz-iX-9pb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hcp-xs-JhW">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMAGIN" translatesAutoresizingMaskIntoConstraints="NO" id="iaS-bT-fwL">
+                                <rect key="frame" x="149.33333333333331" y="437" width="129.33333333333331" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="iaS-bT-fwL" secondAttribute="height" multiplier="114:46" id="rT2-90-jm9"/>
+                                </constraints>
+                            </imageView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5D7-K0-FVZ">
+                                <rect key="frame" x="139" y="706.66666666666663" width="150" height="4"/>
+                                <color key="backgroundColor" red="0.6903452873" green="0.69380152230000003" blue="0.70980668069999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </progressView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="splashImage" translatesAutoresizingMaskIntoConstraints="NO" id="Cne-nM-4io">
+                                <rect key="frame" x="0.0" y="247" width="411.33333333333326" height="343"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Cne-nM-4io" secondAttribute="height" multiplier="410:342" id="FKa-cQ-p5S"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Gui-oe-hJT"/>
+                        <color key="backgroundColor" red="0.95314997430000004" green="0.9603870511" blue="0.98039561509999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="Cne-nM-4io" firstAttribute="width" secondItem="Hcp-xs-JhW" secondAttribute="width" multiplier="410:375" id="0a1-Zm-K6a"/>
+                            <constraint firstItem="iaS-bT-fwL" firstAttribute="height" secondItem="Hcp-xs-JhW" secondAttribute="height" multiplier="46:816" id="3IS-oe-kS4"/>
+                            <constraint firstItem="Cne-nM-4io" firstAttribute="centerY" secondItem="Hcp-xs-JhW" secondAttribute="centerY" multiplier="285:408" id="LYZ-Fn-wKC"/>
+                            <constraint firstItem="iaS-bT-fwL" firstAttribute="centerX" secondItem="Hcp-xs-JhW" secondAttribute="centerX" id="emL-JC-ZPF"/>
+                            <constraint firstItem="iaS-bT-fwL" firstAttribute="centerY" secondItem="Hcp-xs-JhW" secondAttribute="centerY" id="lk7-Dj-wEO"/>
+                            <constraint firstItem="5D7-K0-FVZ" firstAttribute="centerY" secondItem="Hcp-xs-JhW" secondAttribute="centerY" multiplier="620:408" constant="5" id="pq6-vU-Sw8"/>
+                            <constraint firstItem="5D7-K0-FVZ" firstAttribute="width" secondItem="iaS-bT-fwL" secondAttribute="width" id="wOg-Um-ZnG"/>
+                            <constraint firstItem="Cne-nM-4io" firstAttribute="centerX" secondItem="Gui-oe-hJT" secondAttribute="centerX" id="wlJ-Ws-Ay4"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uwv-MW-IyK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1794.3925233644859" y="1508.4233261339093"/>
         </scene>
         <!--Test View Controller-->
         <scene sceneID="yRh-Cd-w1i">
@@ -408,7 +452,7 @@
                             </textView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="EXX-E7-cKF">
                                 <rect key="frame" x="153" y="757" width="122" height="27.333333333333371"/>
-                                <color key="pageIndicatorTintColor" red="0.211766392" green="0.2117616534" blue="0.21176484230000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="pageIndicatorTintColor" red="0.6903452873" green="0.69380152230000003" blue="0.70980668069999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="currentPageIndicatorTintColor" name="systemYellowColor" catalog="System" colorSpace="catalog"/>
                             </pageControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="playback" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Elz-BR-uPs">
@@ -556,11 +600,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="IMAGIN" width="62" height="24.333333969116211"/>
         <image name="addButtonBackground" width="221" height="50"/>
         <image name="addPhotoPointer" width="17" height="13"/>
         <image name="backPointer" width="11.333333015441895" height="16.666666030883789"/>
         <image name="introImage" width="425" height="341"/>
         <image name="photoDefault" width="302" height="317"/>
+        <image name="splashImage" width="411" height="342.33334350585938"/>
         <image name="startPointer" width="8" height="11.333333015441895"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
