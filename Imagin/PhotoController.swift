@@ -110,16 +110,6 @@ class PhotoController: UIViewController {
             print("JSON from server: ", json)
                     
             do {
-               /* let jsonObjectAny: Any = try JSONSerialization.jsonObject(with: data, options: [])
-                    
-                guard
-                    let jsonObject = jsonObjectAny as? [String: Any],
-                    let value = jsonObject["value"] as? [String: Any],
-                    //let id = value["id"] as? Int,
-                    let joke = value["joke"] as? String else {
-                        return
-                    }*/
-                //self?.nextPage.setTitle(joke, for: .normal)
                 self?.activityView.stopAnimating()
                 UIView.transition(with: self!.nextPage, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
                     self?.nextPage.isHidden = false
