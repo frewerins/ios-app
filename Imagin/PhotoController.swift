@@ -7,8 +7,14 @@
 
 import UIKit
 
+class User {
+    var photo: UIImage!;
+}
+
+var user = User()
+
 class PhotoController: UIViewController {
-    var photo: UIImage!
+    //var photo: UIImage!
     let imagePicker = UIImagePickerController()
     var nextController = UIViewController()
     
@@ -91,7 +97,7 @@ class PhotoController: UIViewController {
         beforeSeinding()
         let http: HTTPCommunication = HTTPCommunication()
         let url: URL = URL(string: "http://89.223.93.173:5000/process")!
-        let imageData = photo.pngData()
+        let imageData = user.photo.pngData()
         let imageBase64 = imageData?.base64EncodedString()
        // print(imageBase64)
         let data: [String: Any] = [
@@ -125,7 +131,7 @@ class PhotoController: UIViewController {
 extension PhotoController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedPhoto = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            photo = pickedPhoto
+            user.photo = pickedPhoto
             photoFromUser.image = pickedPhoto
             photoFromUser.layer.borderWidth = 3.0
             photoFromUser.layer.borderColor = CGColor(red: 90.0/255.0, green: 200.0/255.0, blue: 251.0/255.0, alpha: 1.0)
@@ -146,3 +152,4 @@ extension PhotoController: UIImagePickerControllerDelegate, UINavigationControll
     }
     
 }
+

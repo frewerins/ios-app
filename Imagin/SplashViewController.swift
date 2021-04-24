@@ -24,7 +24,7 @@ class SplashViewController: UIViewController {
         UIView.animate(withDuration: 2.5) {
             self.progress.setProgress(1.0, animated: true)
         }
-        Timer.scheduledTimer(withTimeInterval: 2.5, repeats: false) { (_) in
+        Timer.scheduledTimer(withTimeInterval: 2.6, repeats: false) { (_) in
             self.navigationController!.pushViewController(nextController, animated: true)
         }
     

@@ -22,11 +22,21 @@
                                     <constraint firstAttribute="width" secondItem="IEY-ha-Doz" secondAttribute="height" multiplier="114:46" id="t8G-7c-CwF"/>
                                 </constraints>
                             </imageView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LWE-yb-9zN">
+                                <rect key="frame" x="144" y="679" width="126" height="4"/>
+                                <color key="backgroundColor" red="0.6903452873" green="0.69380152230000003" blue="0.70980668069999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="progressTintColor" red="0.36315518619999998" green="0.77963668109999995" blue="0.9843422771" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="trackTintColor" red="0.6903452873" green="0.69380152230000003" blue="0.70980668069999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </progressView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.95314997430000004" green="0.9603870511" blue="0.98039561509999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="LWE-yb-9zN" firstAttribute="width" secondItem="IEY-ha-Doz" secondAttribute="width" id="2kV-Gy-WwG"/>
+                            <constraint firstItem="LWE-yb-9zN" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="55R-Ng-REY"/>
                             <constraint firstItem="IEY-ha-Doz" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="339:408" id="8eo-ky-brE"/>
+                            <constraint firstItem="LWE-yb-9zN" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="620:408" id="P9p-oR-eCm"/>
                             <constraint firstItem="IEY-ha-Doz" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="i6v-BR-cxJ"/>
                             <constraint firstItem="IEY-ha-Doz" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="114:375" id="vvi-dE-Pgi"/>
                         </constraints>

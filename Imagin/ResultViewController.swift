@@ -7,11 +7,14 @@
 
 import UIKit
 
-class ResultController: UIViewController {
+class ResultViewController: UIViewController, UIScrollViewDelegate {
 
+    @IBOutlet weak var photoFromUser: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //photoFromtUser.image = user.photo
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 2)
         // Do any additional setup after loading the view.
     }
     
