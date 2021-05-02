@@ -24,6 +24,9 @@ class PhotoController: UIViewController {
     @IBOutlet weak var actionDescr: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
+        AppUtility.lockOrientation(.portrait)
+        
         imagePicker.delegate = self
             /*UIView.transition(with: photoFromUser, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
             self.photoFromUser.isHidden = true
@@ -96,15 +99,12 @@ class PhotoController: UIViewController {
     func sendPhoto() {
         beforeSeinding()
         let http: HTTPCommunication = HTTPCommunication()
-        let url: URL = URL(string: "http://89.223.93.173:5000/process")!
+        let url: URL = URL(string: "https://imagin.neurotone.net/api/doc")!
         let imageData = user.photo.pngData()
         let imageBase64 = imageData?.base64EncodedString()
        // print(imageBase64)
         let data: [String: Any] = [
-            "image": imageBase64,
-                "metadata": [
-                    "device": "ios"
-                ]
+            "file": imageBase64
         ]
         
         http.postURL(url, data: data) {

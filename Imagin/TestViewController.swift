@@ -25,6 +25,8 @@ class TestViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.shadowImage = UIImage()
+        AppUtility.lockOrientation(.portrait)
+        
         scrollView.delegate = self
         scrollView.addSubview(introImage)
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width * 609 / 375, height: UIScreen.main.bounds.height)

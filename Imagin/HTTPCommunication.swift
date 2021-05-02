@@ -16,9 +16,7 @@ class HTTPCommunication: NSObject {
         let request: URLRequest = URLRequest(url: url)
         let session: URLSession = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
         let task: URLSessionDownloadTask = session.downloadTask(with: request)
-           // Так как задача всегда создается в остановленном состоянии,
-           // мы запускаем ее.
-           task.resume()
+        task.resume()
     }
     
     func postURL(_ url: URL, data: Any, completionHandler: @escaping ((Data) -> Void)) {

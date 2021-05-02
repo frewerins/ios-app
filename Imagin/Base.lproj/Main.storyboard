@@ -195,10 +195,11 @@
                                         <color key="textColor" red="0.211766392" green="0.2117616534" blue="0.21176484230000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zimaColors" translatesAutoresizingMaskIntoConstraints="NO" id="Z0o-91-RrJ" userLabel="circleBack">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="colorCircleWinter" translatesAutoresizingMaskIntoConstraints="NO" id="Z0o-91-RrJ" userLabel="circleBack">
                                         <rect key="frame" x="38.333333333333343" y="516.66666666666663" width="351.33333333333326" height="351.33333333333337"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Z0o-91-RrJ" secondAttribute="height" multiplier="1:1" id="M2L-gB-rkR"/>
                                         </constraints>
@@ -207,12 +208,15 @@
                                                 <integer key="value" value="25"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="rbT-wy-Dya" appends="YES" id="K6K-l6-mbP"/>
+                                        </connections>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y0U-NG-XdY" userLabel="colorsBack">
-                                        <rect key="frame" x="38.333333333333343" y="898" width="351.33333333333326" height="117.33333333333337"/>
+                                        <rect key="frame" x="38.333333333333343" y="898" width="351.33333333333326" height="88"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="Y0U-NG-XdY" secondAttribute="height" multiplier="3:1" id="B3E-N5-Yht"/>
+                                            <constraint firstAttribute="width" secondItem="Y0U-NG-XdY" secondAttribute="height" multiplier="4:1" id="B3E-N5-Yht"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -220,32 +224,44 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vma-uZ-HKo" userLabel="color1">
-                                        <rect key="frame" x="61.666666666666657" y="918" width="102" height="77.333333333333371"/>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vma-uZ-HKo" userLabel="color1">
+                                        <rect key="frame" x="61.666666666666657" y="918" width="102" height="48"/>
                                         <color key="backgroundColor" red="0.211766392" green="0.2117616534" blue="0.21176484230000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="erN-eq-oVf" appends="YES" id="cqj-Jx-5Y9"/>
+                                        </connections>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8B3-6Z-Yrt" userLabel="color3">
-                                        <rect key="frame" x="276" y="915" width="102" height="77.333333333333371"/>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8B3-6Z-Yrt" userLabel="color3">
+                                        <rect key="frame" x="264.33333333333331" y="918" width="102" height="48"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="bfi-Jv-xrt" appends="YES" id="g4Q-Y6-Mt8"/>
+                                        </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEST COMBINATIONS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2R4-XP-Vo3">
-                                        <rect key="frame" x="46" y="1045.3333333333333" width="174" height="21"/>
+                                        <rect key="frame" x="46" y="1016" width="174" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <color key="textColor" red="0.211766392" green="0.2117616534" blue="0.21176484230000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v8o-yd-pMC" userLabel="color2">
-                                        <rect key="frame" x="168" y="918" width="102" height="77.333333333333371"/>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v8o-yd-pMC" userLabel="color2">
+                                        <rect key="frame" x="163" y="918" width="102" height="48"/>
                                         <color key="backgroundColor" systemColor="systemTealColor"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="g4P-Xw-cf5" appends="YES" id="TwO-Wn-2Sq"/>
+                                        </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OUR RECOMMENDATIONS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8C-ta-71F">
-                                        <rect key="frame" x="46" y="1096.3333333333333" width="210" height="21"/>
+                                        <rect key="frame" x="46" y="1067" width="210" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <color key="textColor" red="0.211766392" green="0.2117616534" blue="0.21176484230000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WTU-M3-Wec">
-                                        <rect key="frame" x="316.66666666666669" y="1044.6666666666667" width="63" height="22"/>
+                                        <rect key="frame" x="316.66666666666669" y="1015.3333333333335" width="63" height="22"/>
                                         <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="See all" image="bottomPointer">
                                             <color key="titleColor" red="0.211766392" green="0.2117616534" blue="0.21176484230000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -253,7 +269,7 @@
                                         </state>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Z0r-Ji-zSy">
-                                        <rect key="frame" x="46" y="1144" width="343.66666666666669" height="326"/>
+                                        <rect key="frame" x="46" y="1114.6666666666667" width="343.66666666666669" height="355.33333333333326"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" red="0.211766392" green="0.2117616534" blue="0.21176484230000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -338,21 +354,37 @@
                     <navigationItem key="navigationItem" id="hbC-Ag-V2q"/>
                     <size key="freeformSize" width="428" height="1500"/>
                     <connections>
+                        <outlet property="color1" destination="Vma-uZ-HKo" id="Tbm-3X-Sik"/>
+                        <outlet property="color2" destination="v8o-yd-pMC" id="Wdx-wm-kJ0"/>
+                        <outlet property="color3" destination="8B3-6Z-Yrt" id="Psq-JV-wPO"/>
+                        <outlet property="colorCircle" destination="Z0o-91-RrJ" id="TvX-VA-gVl"/>
                         <outlet property="photoFromUser" destination="0LT-Rz-GBc" id="ucQ-ff-g6c"/>
                         <outlet property="scrollView" destination="KwZ-9Z-XLf" id="ViN-8b-mTP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wuk-HP-1D1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="rbT-wy-Dya">
+                    <connections>
+                        <action selector="tapOnColor:" destination="rSn-xk-wPc" id="Q4r-ez-Gge"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="erN-eq-oVf">
+                    <connections>
+                        <action selector="tapColor1:" destination="rSn-xk-wPc" id="9y8-1E-Evw"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="g4P-Xw-cf5">
+                    <connections>
+                        <action selector="tapColor2:" destination="rSn-xk-wPc" id="ijR-Ns-jzR"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="bfi-Jv-xrt">
+                    <connections>
+                        <action selector="tapColor3:" destination="rSn-xk-wPc" id="pfu-ld-hPc"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1948.5981308411215" y="2295.6803455723543"/>
-        </scene>
-        <!--Intro Page View Controller-->
-        <scene sceneID="lvC-Iw-mNi">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="fi2-I4-uwE" customClass="IntroPageViewController" customModule="Imagin" customModuleProvider="target" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6en-eh-oUn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1438" y="751"/>
         </scene>
         <!--Intro3-->
         <scene sceneID="60f-JH-pW0">
@@ -713,83 +745,6 @@
             </objects>
             <point key="canvasLocation" x="145.79439252336448" y="2129.8056155507561"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="HVf-8C-9eW">
-            <objects>
-                <navigationController id="Ajg-vI-18x" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="backPointer" backIndicatorTransitionMaskImage="backPointer" id="HYn-S8-I0n">
-                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.95314997430000004" green="0.9603870511" blue="0.98039561509999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <color key="tintColor" red="0.211766392" green="0.2117616534" blue="0.21176484230000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <color key="barTintColor" red="0.95314997430000004" green="0.9603870511" blue="0.98039561509999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.211766392" green="0.2117616534" blue="0.21176484230000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <color key="textShadowColor" red="0.95314997430000004" green="0.9603870511" blue="0.98039561509999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        </textAttributes>
-                        <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" red="0.211766392" green="0.2117616534" blue="0.21176484230000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <color key="textShadowColor" red="0.95314997430000004" green="0.9603870511" blue="0.98039561509999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="m3O-ys-gVm" kind="relationship" relationship="rootViewController" id="osA-Ql-Wki"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uR9-bw-VLv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-959" y="762"/>
-        </scene>
-        <!--Intro View Controller-->
-        <scene sceneID="TLY-sv-Qe3">
-            <objects>
-                <viewController storyboardIdentifier="IntroViewController" id="m3O-ys-gVm" customClass="IntroViewController" customModule="Imagin" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="W6M-E3-2Vq">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WUM-8u-6q1">
-                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                                <color key="backgroundColor" red="0.95314997430000004" green="0.9603870511" blue="0.98039561509999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <connections>
-                                    <segue destination="fi2-I4-uwE" kind="embed" id="QSv-h3-kTd"/>
-                                </connections>
-                            </containerView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="W6R-JO-iFt">
-                                <rect key="frame" x="239.33333333333337" y="749" width="121.33333333333326" height="28"/>
-                                <color key="pageIndicatorTintColor" systemColor="opaqueSeparatorColor"/>
-                                <color key="currentPageIndicatorTintColor" red="0.98557537790000005" green="0.84878456589999995" blue="0.42342513799999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </pageControl>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gy-ae-65r">
-                                <rect key="frame" x="0.0" y="80.666666666666657" width="428" height="385.66666666666674"/>
-                                <viewLayoutGuide key="contentLayoutGuide" id="eJ3-f7-xyy"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="f0P-Ea-1bh"/>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="eAI-uK-BHE"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="WUM-8u-6q1" firstAttribute="bottom" secondItem="W6M-E3-2Vq" secondAttribute="bottom" id="2Ok-du-1hu"/>
-                            <constraint firstItem="8gy-ae-65r" firstAttribute="height" secondItem="W6M-E3-2Vq" secondAttribute="height" multiplier="340:816" id="3UQ-Xl-raK"/>
-                            <constraint firstItem="8gy-ae-65r" firstAttribute="trailing" secondItem="eAI-uK-BHE" secondAttribute="trailing" id="4FX-7E-a8y"/>
-                            <constraint firstItem="W6R-JO-iFt" firstAttribute="top" secondItem="WUM-8u-6q1" secondAttribute="centerY" multiplier="660:408" id="6hK-Ko-7eQ"/>
-                            <constraint firstItem="WUM-8u-6q1" firstAttribute="trailing" secondItem="W6M-E3-2Vq" secondAttribute="trailing" id="Viq-vb-w5N"/>
-                            <constraint firstItem="8gy-ae-65r" firstAttribute="centerY" secondItem="W6M-E3-2Vq" secondAttribute="centerY" multiplier="241:408" id="Xn3-dO-Qei"/>
-                            <constraint firstItem="WUM-8u-6q1" firstAttribute="leading" secondItem="W6M-E3-2Vq" secondAttribute="leading" id="qJF-Fq-CWp"/>
-                            <constraint firstItem="WUM-8u-6q1" firstAttribute="top" secondItem="W6M-E3-2Vq" secondAttribute="top" id="rg3-je-M8U"/>
-                            <constraint firstItem="8gy-ae-65r" firstAttribute="leading" secondItem="eAI-uK-BHE" secondAttribute="leading" id="xnd-bw-GKh"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="kAS-gS-p83"/>
-                    <connections>
-                        <outlet property="PageController" destination="W6R-JO-iFt" id="MiA-ac-FPW"/>
-                        <outlet property="scrollView" destination="8gy-ae-65r" id="hpg-DD-A9S"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TdN-Ql-aoX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="86.915887850467286" y="750.9719222462204"/>
-        </scene>
     </scenes>
     <resources>
         <image name="IMAGIN" width="62" height="24.333333969116211"/>
@@ -797,17 +752,14 @@
         <image name="addPhotoPointer" width="17" height="13"/>
         <image name="backPointer" width="11.333333015441895" height="16.666666030883789"/>
         <image name="bottomPointer" width="10" height="7"/>
+        <image name="colorCircleWinter" width="924" height="930"/>
         <image name="introImage" width="425" height="341"/>
         <image name="photoDefault" width="302" height="317"/>
         <image name="splashImage" width="411" height="342.33334350585938"/>
         <image name="startPointer" width="8" height="11.333333015441895"/>
-        <image name="zimaColors" width="271" height="272"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="secondarySystemGroupedBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
