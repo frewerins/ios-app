@@ -6,9 +6,12 @@
 //
 
 import UIKit
+//import JWT
 
 class User {
     var photo: UIImage!;
+    var coloType: Int = 0;
+    var responseStatusCode: Int = 200;
 }
 
 var user = User()
@@ -78,14 +81,16 @@ class PhotoController: UIViewController {
             self.activityView.centerYAnchor.constraint(equalTo:
                     self.addPhotoButton.centerYAnchor)
         ])
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.gray
+        ]
+        let newTitle = NSAttributedString(string: "Uploading...", attributes: attributes)
+        
         UIView.transition(with: nextPage, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
-            let attributes: [NSAttributedString.Key: Any] = [
-                .foregroundColor: UIColor.gray
-            ]
-            let newTitle = NSAttributedString(string: "Uploading...", attributes: attributes)
             //let newTitle = self.nextPage.currentAttributedTitle
             //newTitle?.setValue("Uploading", forKey: "string")
                 self.nextPage.setAttributedTitle(newTitle, for: .normal)
+            self.nextPage.isEnabled = false
         }, completion: { _ in })
         
         UIView.transition(with: actionLabel, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
@@ -98,33 +103,42 @@ class PhotoController: UIViewController {
     
     func sendPhoto() {
         beforeSeinding()
-        let http: HTTPCommunication = HTTPCommunication()
-        let url: URL = URL(string: "https://imagin.neurotone.net/api/doc")!
-        let imageData = user.photo.pngData()
-        let imageBase64 = imageData?.base64EncodedString()
-       // print(imageBase64)
-        let data: [String: Any] = [
-            "file": imageBase64
-        ]
-        
-        http.postURL(url, data: data) {
+        let http: HTTPCommunication = HTTPCommunication() {
             [weak self] (data) -> Void in
                 
-            guard let json = String(data: data, encoding: String.Encoding.utf8) else { print("Invalid json")
-                return
-            }
-            print("JSON from server: ", json)
-                    
-            do {
+            if data != nil {
                 self?.activityView.stopAnimating()
                 UIView.transition(with: self!.nextPage, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
-                    self?.nextPage.isHidden = false
+                  //  self?.nextPage.isHidden = false
                 }, completion: { _ in })
                 self!.navigationController!.pushViewController(self!.nextController, animated: true)
-            } catch {
-                print("Can't serialize data.")
+            } else {
+                self?.activityView.stopAnimating()
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: UIColor.red
+                ]
+                let newTitle = NSAttributedString(string: "Something's wrong. Please try again", attributes: attributes)
+                
+                UIView.transition(with: self!.nextPage, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
+                        self!.nextPage.setAttributedTitle(newTitle, for: .normal)
+                }, completion: { _ in })
+                UIView.transition(with: self!.addPhotoButton, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
+                    self!.addPhotoButton.isHidden = false
+                }, completion: { _ in })
+                
             }
         }
+        let url: URL = URL(string: "https://imagin.neurotone.net/api/v1/image/process")!
+       // let imageData = user.photo.pngData()
+       // let imageBase64 = imageData?.base64EncodedString()
+       // print(imageBase64)
+     //   let data: [String: Any] = [
+      //      "file": imageBase64
+     //   ]
+       // let requestFactory = RequestFactory()
+        //let data = requestFactory.createRequest()
+        
+        http.postURL(url)
     }
 }
 
@@ -141,6 +155,17 @@ extension PhotoController: UIImagePickerControllerDelegate, UINavigationControll
             UIView.transition(with: photoFromUser, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
                 self.photoFromUser.isHidden = false
             }, completion: { _ in })
+            
+            let attributes: [NSAttributedString.Key: Any] = [
+                .foregroundColor: UIColor.gray
+            ]
+            
+            let newTitle = NSAttributedString(string: "Upload", attributes: attributes)
+            
+            UIView.transition(with: self.nextPage, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
+                self.nextPage.setAttributedTitle(newTitle, for: .normal)
+            }, completion: { _ in })
+            self.nextPage.isEnabled = true
             UIView.transition(with: nextPage, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
                 self.nextPage.isHidden = false
             }, completion: { _ in })
