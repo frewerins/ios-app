@@ -316,7 +316,7 @@
                                         <color key="textColor" red="0.211766392" green="0.2117616534" blue="0.21176484230000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="seasons" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jz6-zF-PRm">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="seasons" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jz6-zF-PRm">
                                         <rect key="frame" x="38.333333333333343" y="714" width="389.66666666666663" height="112.66666666666663"/>
                                         <color key="backgroundColor" red="0.95314997430000004" green="0.9603870511" blue="0.98039561509999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
@@ -448,6 +448,9 @@
                         <outlet property="colorsTitle" destination="2R4-XP-Vo3" id="JUC-Cg-C1o"/>
                         <outlet property="photoFromUser" destination="0LT-Rz-GBc" id="ucQ-ff-g6c"/>
                         <outlet property="scrollView" destination="KwZ-9Z-XLf" id="ViN-8b-mTP"/>
+                        <outlet property="seasonsTitle" destination="Bqe-GX-L1Y" id="cPl-qO-OLX"/>
+                        <outlet property="seasonsTop" destination="V6V-w5-UYX" id="995-9q-Mdb"/>
+                        <outlet property="seeAllButtonOutlet" destination="WTU-M3-Wec" id="6IN-Sy-t4L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wuk-HP-1D1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

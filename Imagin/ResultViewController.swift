@@ -10,6 +10,11 @@ import UIKit
 //заглушка на ответ от сервера
 let colorsFromServer = [UIColor(red: 226/255, green: 79/255, blue: 28/255, alpha: 1), UIColor(red: 73/255, green: 11/255, blue: 160/255, alpha: 1),UIColor(red: 176/255, green: 191/255, blue: 120/255, alpha: 1),UIColor(red: 176/255, green: 191/255, blue: 120/255, alpha: 1),UIColor(red: 176/255, green: 191/255, blue: 120/255, alpha: 1),UIColor(red: 176/255, green: 191/255, blue: 120/255, alpha: 1),UIColor(red: 176/255, green: 191/255, blue: 120/255, alpha: 1),UIColor(red: 176/255, green: 191/255, blue: 120/255, alpha: 1)]
 
+let colorsForLadder = [UIColor(red: 222/255, green: 19/255, blue: 84/255, alpha: 1),
+    UIColor(red: 226/255, green: 106/255, blue: 71/255, alpha: 1),
+    UIColor(red: 224/255, green: 78/255, blue: 20/255, alpha: 1),
+    UIColor(red: 224/255, green: 116/255, blue: 67/255, alpha: 1)]
+
 let seasons = ["Winter", "Autumn", "Summer", "Spring"]
 
 class ResultViewController: UIViewController, UIScrollViewDelegate {
@@ -21,8 +26,10 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var collectinViewForColors: UICollectionView!
     
     @IBOutlet weak var collectionViewForSeasons: UICollectionView!
+    @IBOutlet weak var seeAllButtonOutlet: UIButton!
     @IBOutlet weak var colorsTitle: UILabel!
     @IBOutlet weak var colorDescr: UILabel!
+    @IBOutlet weak var seasonsTitle: UILabel!
     @IBOutlet weak var color1: UIImageView!
     @IBOutlet weak var color2: UIImageView!
     @IBOutlet weak var color3: UIImageView!
@@ -32,8 +39,11 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
     let spacing = 10;
     var cellHeight: Float = 100;
     var cellWidth = 0;
+    var wasTapOnCOlor = false;
+    var ladder: Ladder!;
     
     @IBOutlet weak var collectionViewBottom: NSLayoutConstraint!
+    @IBOutlet weak var seasonsTop: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,6 +66,7 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         collectionViewBottom.isActive = false
         collectionViewBottom = collectinViewForColors.bottomAnchor.constraint(equalTo: colorDescr.topAnchor, constant: CGFloat(offset))
         collectionViewBottom.isActive = true
+        ladder = Ladder(view: scrollView, maxSize: 6)
     }
     
     @IBAction func tapOnSeeAll(_ sender: Any) {
@@ -63,13 +74,13 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         if (seeAllwasTapped) {
             seeAllwasTapped = false
             offset = cellHeight + 30
-            
+            //seeAllButtonOutlet.setImage(UIImage(contentsOfFile: "topPointer.png"), for: [])
         } else {
             seeAllwasTapped = true
             let linesCount =  Int((colorsFromServer.count - 1) / 6) + 1
             let d = (linesCount - 1) * spacing
             offset = Float(Int(Float(linesCount) * cellHeight) + d + 30)
-            
+            //seeAllButtonOutlet.setImage(UIImage(contentsOfFile: "bottomPointer.png"), for: [])
         }
         collectionViewBottom.isActive = false
         collectionViewBottom = collectinViewForColors.bottomAnchor.constraint(equalTo: colorDescr.topAnchor, constant: CGFloat(offset))
@@ -188,5 +199,99 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
             return CGSize(width: collectionView.frame.width * 2/5, height: collectionView.frame.height)
         }
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView.restorationIdentifier == "colors" {
+            if (!wasTapOnCOlor) {
+                wasTapOnCOlor = true
+                for cell in collectionView.visibleCells as! [ColorCollectionViewCell] {
+                    if (collectionView.indexPath(for: cell) != indexPath) {
+                        cell.colorBackground.alpha = 0.1
+                    } else {
+                        cell.colorBackground.alpha = 1
+                    }
+                }
+                ladder.show(collectionView: collectionView, indexPath: indexPath, colors: colorsForLadder)
+                if (ladder.images[ladder.visibleImagesCount - 1].frame.maxY > collectinViewForColors.frame.maxY) {
+                seasonsTop.isActive = false
+                seasonsTop = seasonsTitle.topAnchor.constraint(equalTo: ladder.images[ladder.visibleImagesCount - 1].bottomAnchor, constant: 30)
+                    seasonsTop.isActive = true
+                }
+            } else {
+                wasTapOnCOlor = false
+                ladder.hide()
+                for cell in collectionView.visibleCells as! [ColorCollectionViewCell] {
+                        cell.colorBackground.alpha = 1
+                }
+                
+                seasonsTop.isActive = false
+                seasonsTop = seasonsTitle.topAnchor.constraint(equalTo: collectinViewForColors.bottomAnchor, constant: 30)
+                seasonsTop.isActive = true
+            }
+            //seeAllButtonOutlet.sendActions(for: .touchUpInside)
+        } else {
+            return
+        }
+    }
     
+}
+
+
+class Ladder {
+    var images: [UIImageView] = [];
+    var visibleImagesCount = 0;
+    init(view: UIView, maxSize: Int) {
+        for i in 0...maxSize {
+            let newImageView = UIImageView()
+            newImageView.isHidden = true
+            view.addSubview(newImageView)
+            images.append(newImageView)
+        }
+    }
+    
+    func show(collectionView: UICollectionView, indexPath: IndexPath, colors: [UIColor]) {
+        let cell = collectionView.cellForItem(at: indexPath)!
+        let height = cell.frame.height / 3
+        let space = height * 2 / 3
+        let offsetX = collectionView.frame.minX
+        let offsetY = collectionView.frame.minY
+        let index = indexPath.item % 6
+        if index < 3 {
+            let x = cell.frame.minX
+            var y = cell.frame.minY
+            for i in 0...colors.count - 1 {
+                let maxX = collectionView.cellForItem(at: [0, min(index + i + 1, 5)])!.frame.maxX
+                let newImageView = images[i]
+                print("x ", x, "y ", y)
+                newImageView.frame = CGRect(x: offsetX + x, y: offsetY + y + space, width: maxX - x, height: height)
+                newImageView.layer.cornerRadius = 10
+                newImageView.backgroundColor = colorsForLadder[i]
+                //images.append(newImageView)
+                y = y + space
+            }
+        } else {
+            var y = cell.frame.minY
+            let maxX = cell.frame.maxX
+            for i in 0...colorsForLadder.count - 1 {
+                let x = collectionView.cellForItem(at: [0, max(0, index - i - 1)])!.frame.minX
+                let newImageView = images[i]
+                //print("x ", x, "y ", y)
+                newImageView.frame = CGRect(x: offsetX + x, y: offsetY + y + space, width: maxX - x, height: height)
+                newImageView.layer.cornerRadius = 10
+                newImageView.backgroundColor = colorsForLadder[i]
+               // images.append(newImageView)
+                y = y + space
+            }
+        }
+        for i in 0...colors.count - 1 {
+            images[i].isHidden = false
+        }
+        visibleImagesCount = colors.count
+    }
+    
+    func hide() {
+        for image in images {
+            image.isHidden = true
+        }
+        visibleImagesCount = 0
+    }
 }
