@@ -2,7 +2,7 @@
 //  ColorCollectionViewCell.swift
 //  Imagin
 //
-//  Created by a.d.knyazeva on 09.05.2021.
+//  Created by a.d.knyazeva on 12.05.2021.
 //
 
 import UIKit

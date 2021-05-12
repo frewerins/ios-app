@@ -30,9 +30,9 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var colorsTitle: UILabel!
     @IBOutlet weak var colorDescr: UILabel!
     @IBOutlet weak var seasonsTitle: UILabel!
-    @IBOutlet weak var color1: UIImageView!
-    @IBOutlet weak var color2: UIImageView!
-    @IBOutlet weak var color3: UIImageView!
+ //   @IBOutlet weak var color1: UIImageView!
+  //  @IBOutlet weak var color2: UIImageView!
+  //  @IBOutlet weak var color3: UIImageView!
     var colors: [UIImageView] = [];
     var currentColor: Int = 0;
     var seeAllwasTapped = false;
@@ -52,7 +52,7 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         photoFromUser.image = user.photo
         scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 2)
         
-        colors = [color1, color2, color3]
+//        colors = [color1, color2, color3]
         collectinViewForColors.dataSource = self
         collectinViewForColors.delegate = self
         collectionViewForSeasons.dataSource = self
