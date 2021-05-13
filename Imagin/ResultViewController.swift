@@ -21,7 +21,7 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var photoFromUser: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var colorCircle: UIImageView!
+   // @IBOutlet weak var colorCircle: UIImageView!
     
     @IBOutlet weak var collectinViewForColors: UICollectionView!
     
@@ -30,6 +30,7 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var colorsTitle: UILabel!
     @IBOutlet weak var colorDescr: UILabel!
     @IBOutlet weak var seasonsTitle: UILabel!
+    @IBOutlet weak var actionDescrBackground: UIImageView!
     //   @IBOutlet weak var color1: UIImageView!
   //  @IBOutlet weak var color2: UIImageView!
   //  @IBOutlet weak var color3: UIImageView!
@@ -44,6 +45,7 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var collectionViewBottom: NSLayoutConstraint!
     @IBOutlet weak var seasonsTop: NSLayoutConstraint!
+    @IBOutlet weak var actionDescrBackgroundTop: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         AppUtility.lockOrientation(.portrait)
@@ -64,6 +66,12 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         collectionViewBottom.isActive = false
         collectionViewBottom = collectinViewForColors.bottomAnchor.constraint(equalTo: colorDescr.topAnchor, constant: CGFloat(offset))
         collectionViewBottom.isActive = true
+        
+        
+     //   actionDescrBackgroundTop.isActive = false
+      //  actionDescrBackgroundTop = actionDescrBackground.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor, constant: CGFloat(-100))
+       // actionDescrBackgroundTop.isActive = true
+        
         ladder = Ladder(view: scrollView, maxSize: 6)
     }
     override func viewWillAppear(_ animated: Bool) {
