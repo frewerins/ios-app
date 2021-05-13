@@ -22,6 +22,7 @@ class TestViewController: UIViewController, UIScrollViewDelegate {
     var labels: [String] = ["What is it?", "How it works?", "What do you get?"];
     var descrs: [String] = ["Artificial Intelligence that will help you create a unique style",
     "Very cool!", "New life :)"];
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -41,6 +42,59 @@ class TestViewController: UIViewController, UIScrollViewDelegate {
         }, completion: { _ in })
     }
     
+    @IBAction func rigtSwipe(_ sender: Any) {
+        currentPage = max(currentPage - 1, 0)
+        self.pageControl.currentPage = currentPage
+        UIView.animate(withDuration: 0.5, animations: {
+            self.label.alpha = 0
+        })
+        self.label.text = self.labels[self.currentPage]
+        UIView.animate(withDuration: 0.5, animations: {
+            self.label.alpha = 1
+        })
+        scrollView.setContentOffset(CGPoint(x: Int(offsets[currentPage]), y: 0), animated: true)
+      
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.descr.alpha = 0
+        })
+        self.descr.text = self.descrs[self.currentPage]
+        UIView.animate(withDuration: 1, animations: {
+            self.descr.alpha = 1
+        })
+    }
+    
+    @IBAction func leftSwipe(_ sender: Any) {
+        currentPage = min(currentPage + 1, 2)
+        self.pageControl.currentPage = currentPage
+        if (currentPage == 2) {
+            UIView.transition(with: label, duration: 0.2, options: .transitionCrossDissolve, animations: {() -> Void in
+                self.startButton.isHidden = false
+            }, completion: { _ in })
+        }
+        
+        scrollView.setContentOffset(CGPoint(x: Int(offsets[currentPage]), y: 0), animated: true)
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            
+            self.label.alpha = 0
+        })
+        self.label.text = self.labels[self.currentPage]
+        UIView.animate(withDuration: 0.5, animations: {
+            self.label.alpha = 1
+        })
+        
+        
+        UIView.animate(withDuration: 1, animations: {
+            self.descr.alpha = 0
+        })
+        self.descr.text = self.descrs[self.currentPage]
+        UIView.animate(withDuration: 0.5, animations: {
+            self.descr.alpha = 1
+        })
+    }
+    
+    /*
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentX = Float(scrollView.contentOffset.x)
         if (currentX < Float(lastOffset)) {
@@ -110,5 +164,7 @@ class TestViewController: UIViewController, UIScrollViewDelegate {
         UIView.animate(withDuration: 1, animations: {
             self.descr.alpha = 1
         })
-      }
+      }*/
+    
+    
 }

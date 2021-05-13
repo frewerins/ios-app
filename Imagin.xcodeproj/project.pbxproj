@@ -14,14 +14,12 @@
 		11061BD525F27F92008327DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11061BD425F27F92008327DD /* Assets.xcassets */; };
 		11061BD825F27F92008327DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11061BD625F27F92008327DD /* LaunchScreen.storyboard */; };
 		11061BE125F283C9008327DD /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061BE025F283C9008327DD /* PhotoController.swift */; };
-		11062C0C261F7C7800DDA793 /* IntroPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11062C0B261F7C7800DDA793 /* IntroPageViewController.swift */; };
 		112F4010262C23F100FD27CD /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112F400F262C23F100FD27CD /* SplashViewController.swift */; };
 		1174AE5D262B34850027084C /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1174AE5C262B34850027084C /* TestViewController.swift */; };
 		117CE78E2602EB7700F9582B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117CE78D2602EB7700F9582B /* ResultViewController.swift */; };
 		119DECDE264C4C0E00BE0E20 /* SeasonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119DECDD264C4C0E00BE0E20 /* SeasonCollectionViewCell.swift */; };
 		119DECE1264C4C6700BE0E20 /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119DECE0264C4C6700BE0E20 /* ColorCollectionViewCell.swift */; };
 		11E0FFD3261751A4001EF67D /* HTTPCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E0FFD2261751A4001EF67D /* HTTPCommunication.swift */; };
-		11E9CD372621EE3000A242E6 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9CD362621EE3000A242E6 /* IntroViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,14 +32,12 @@
 		11061BD725F27F92008327DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11061BD925F27F92008327DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11061BE025F283C9008327DD /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoController.swift; sourceTree = "<group>"; };
-		11062C0B261F7C7800DDA793 /* IntroPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroPageViewController.swift; sourceTree = "<group>"; };
 		112F400F262C23F100FD27CD /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		1174AE5C262B34850027084C /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		117CE78D2602EB7700F9582B /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		119DECDD264C4C0E00BE0E20 /* SeasonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCollectionViewCell.swift; sourceTree = "<group>"; };
 		119DECE0264C4C6700BE0E20 /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		11E0FFD2261751A4001EF67D /* HTTPCommunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPCommunication.swift; sourceTree = "<group>"; };
-		11E9CD362621EE3000A242E6 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +80,6 @@
 				11061BE025F283C9008327DD /* PhotoController.swift */,
 				117CE78D2602EB7700F9582B /* ResultViewController.swift */,
 				11E0FFD2261751A4001EF67D /* HTTPCommunication.swift */,
-				11062C0B261F7C7800DDA793 /* IntroPageViewController.swift */,
-				11E9CD362621EE3000A242E6 /* IntroViewController.swift */,
 				1174AE5C262B34850027084C /* TestViewController.swift */,
 				112F400F262C23F100FD27CD /* SplashViewController.swift */,
 				119DECDD264C4C0E00BE0E20 /* SeasonCollectionViewCell.swift */,
@@ -164,7 +158,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11062C0C261F7C7800DDA793 /* IntroPageViewController.swift in Sources */,
 				11061BD025F27F90008327DD /* ViewController.swift in Sources */,
 				11061BCC25F27F90008327DD /* AppDelegate.swift in Sources */,
 				11E0FFD3261751A4001EF67D /* HTTPCommunication.swift in Sources */,
@@ -175,7 +168,6 @@
 				11061BE125F283C9008327DD /* PhotoController.swift in Sources */,
 				11061BCE25F27F90008327DD /* SceneDelegate.swift in Sources */,
 				1174AE5D262B34850027084C /* TestViewController.swift in Sources */,
-				11E9CD372621EE3000A242E6 /* IntroViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

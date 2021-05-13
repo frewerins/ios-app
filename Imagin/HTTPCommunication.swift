@@ -1,9 +1,6 @@
 import UIKit
 
 class HTTPCommunication: NSObject {
-    // Свойство completionHandler в классе - это замыкание, которое будет
-    // содержать код обработки полученных с сайта данных и вывода их
-    // в интерфейсе нашего приложения.
     var completionHandler: ((DataFromServer?) -> Void)!;
     var taskDowload: URLSessionDownloadTask!;
     let request = RequestFactory();
@@ -11,14 +8,6 @@ class HTTPCommunication: NSObject {
     init(completionHandler: @escaping((DataFromServer?) -> Void)) {
         self.completionHandler = completionHandler
     }
-    
-   /* func retrieveURL(_ url: URL, completionHandler: @escaping ((Data) -> Void)) {
-        self.completionHandler = completionHandler
-        let request: URLRequest = URLRequest(url: url)
-        let session: URLSession = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
-        let task: URLSessionDownloadTask = session.downloadTask(with: request)
-        task.resume()
-    }*/
     
     func postURL(_ url: URL) {
        // self.completionHandler = completionHandler

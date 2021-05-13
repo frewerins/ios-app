@@ -39,6 +39,9 @@ class PhotoController: UIViewController {
         }, completion: { _ in })
         self.nextController = storyboard!.instantiateViewController(identifier: "ResultViewController")
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
     @IBAction func sendPhotoAction(_ sender: Any) {
         sendPhoto()
     }
@@ -65,7 +68,7 @@ class PhotoController: UIViewController {
     lazy var activityView: UIActivityIndicatorView = {
         let activityView: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
         activityView.hidesWhenStopped = true
-        activityView.startAnimating()
+       // activityView.startAnimating()
         view.addSubview(activityView)
         return activityView
     }()
@@ -81,6 +84,7 @@ class PhotoController: UIViewController {
             self.activityView.centerYAnchor.constraint(equalTo:
                     self.addPhotoButton.centerYAnchor)
         ])
+        activityView.startAnimating()
         let attributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.gray
         ]
@@ -111,6 +115,21 @@ class PhotoController: UIViewController {
                 UIView.transition(with: self!.nextPage, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
                   //  self?.nextPage.isHidden = false
                 }, completion: { _ in })
+                
+                let attributes: [NSAttributedString.Key: Any] = [
+                    .foregroundColor: UIColor.gray
+                ]
+                
+                let newTitle = NSAttributedString(string: "Upload", attributes: attributes)
+                
+                UIView.transition(with: self!.nextPage, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
+                    //let newTitle = self.nextPage.currentAttributedTitle
+                    //newTitle?.setValue("Uploading", forKey: "string")
+                    self!.nextPage.setAttributedTitle(newTitle, for: .normal)
+                    self!.nextPage.isEnabled = true
+                    self!.addPhotoButton.isHidden = false
+                }, completion: { _ in })
+                
                 self!.navigationController!.pushViewController(self!.nextController, animated: true)
             } else {
                 self?.activityView.stopAnimating()

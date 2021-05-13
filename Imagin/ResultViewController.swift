@@ -30,7 +30,7 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var colorsTitle: UILabel!
     @IBOutlet weak var colorDescr: UILabel!
     @IBOutlet weak var seasonsTitle: UILabel!
- //   @IBOutlet weak var color1: UIImageView!
+    //   @IBOutlet weak var color1: UIImageView!
   //  @IBOutlet weak var color2: UIImageView!
   //  @IBOutlet weak var color3: UIImageView!
     var colors: [UIImageView] = [];
@@ -46,11 +46,9 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var seasonsTop: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.isNavigationBarHidden = false
         AppUtility.lockOrientation(.portrait)
         photoFromUser.image = user.photo
-        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 2)
+       // scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 2)
         
 //        colors = [color1, color2, color3]
         collectinViewForColors.dataSource = self
@@ -67,6 +65,9 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         collectionViewBottom = collectinViewForColors.bottomAnchor.constraint(equalTo: colorDescr.topAnchor, constant: CGFloat(offset))
         collectionViewBottom.isActive = true
         ladder = Ladder(view: scrollView, maxSize: 6)
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     @IBAction func tapOnSeeAll(_ sender: Any) {
@@ -87,7 +88,7 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         collectionViewBottom.isActive = true
     }
     
-
+/*
     @IBAction func tapOnCircle(_ gestureRecognizer : UITapGestureRecognizer ) {
         guard gestureRecognizer.view != nil else { return }
                
@@ -99,7 +100,7 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
              animator.startAnimation()
           }
         
-    }
+    }*/
     /*
     @IBAction func tapOnColor(_ sender: UITapGestureRecognizer) {
         print("tap!!")
@@ -179,13 +180,18 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView.restorationIdentifier == "colors" {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCollectionViewCell", for: indexPath) as! ColorCollectionViewCell
-        cell.colorBackground.backgroundColor = colorsFromServer[indexPath.item]
-        cell.colorBackground.layer.cornerRadius = 10
-        return cell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCollectionViewCell", for: indexPath) as! ColorCollectionViewCell
+            cell.colorBackground.backgroundColor = colorsFromServer[indexPath.item]
+            cell.colorBackground.layer.cornerRadius = 10
+            return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SeasonCollectionViewCell", for: indexPath) as! SeasonCollectionViewCell
             cell.label.text = seasons[indexPath.item]
+            for i in 0...cell.images.count - 1 {
+                cell.images[i].backgroundColor = colorsFromServer[i]
+                cell.images[i].layer.cornerRadius = 5
+                cell.stackView.addArrangedSubview(cell.images[i])
+            }
             return cell
         }
     }
