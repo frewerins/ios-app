@@ -106,7 +106,7 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
-        updateColorType(newSeason: currentSeason)
+        updateColorType(newSeason: seasons[user.colorType].lowercased())
     }
     
     @IBAction func tapOnSeeAll(_ sender: Any) {
@@ -219,7 +219,7 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //print("id ", collectionView.restorationIdentifier)
         if collectionView.restorationIdentifier == "colors" {
-            print(colorsFromServer[currentSeason]!.count)
+//            print(colorsFromServer[currentSeason]!.count)
             return colorsFromServer[currentSeason]!.count
         } else {
             return 4

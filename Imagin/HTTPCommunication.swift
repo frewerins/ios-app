@@ -174,7 +174,12 @@ class DataFromServerPOST: DataFromServer {
     let photoQuality: Int;
     init(file: UIImage, colorType: Int, photoQuality: Int) {
         self.file = file
-        self.colorType = colorType
+        //пока не написала обработчик, если качество фото плохое
+        if colorType == -1 {
+            self.colorType = 0
+        } else {
+            self.colorType = colorType
+        }
         self.photoQuality = photoQuality
     }
 }
