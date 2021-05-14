@@ -3,4 +3,114 @@
    uuid = "A208A7B6-46F3-45B3-B5A4-966DEC2258E7"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D771FF8C-EB48-4F8A-92C3-F8C43F001C9B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Imagin/ResultViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "ResultViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "D771FF8C-EB48-4F8A-92C3-F8C43F001C9B - 3f484a5d858fb030"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Imagin.ResultViewController.seasonsTop.getter : Swift.Optional&lt;__C.NSLayoutConstraint&gt;"
+                  moduleName = "Imagin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/study/ios/Imagin/Imagin/ResultViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "D771FF8C-EB48-4F8A-92C3-F8C43F001C9B - ffefd72679f1c804"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Imagin.ResultViewController.seasonsTop.setter : Swift.Optional&lt;__C.NSLayoutConstraint&gt;"
+                  moduleName = "Imagin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/study/ios/Imagin/Imagin/ResultViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "155">
+               </Location>
+               <Location
+                  uuid = "D771FF8C-EB48-4F8A-92C3-F8C43F001C9B - e90a054f6e752c26"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Imagin.ResultViewController.seasonsTop.modify : Swift.Optional&lt;__C.NSLayoutConstraint&gt;"
+                  moduleName = "Imagin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/study/ios/Imagin/Imagin/ResultViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "59">
+               </Location>
+               <Location
+                  uuid = "D771FF8C-EB48-4F8A-92C3-F8C43F001C9B - 2f7f5c5ee9b71e8f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Imagin.ResultViewController.seasonsTop.modify : Swift.Optional&lt;__C.NSLayoutConstraint&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Imagin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/study/ios/Imagin/Imagin/ResultViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "D771FF8C-EB48-4F8A-92C3-F8C43F001C9B - cd74451f773c8d3d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Imagin.ResultViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Imagin.ResultViewController"
+                  moduleName = "Imagin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/study/ios/Imagin/Imagin/ResultViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "2590">
+               </Location>
+               <Location
+                  uuid = "D771FF8C-EB48-4F8A-92C3-F8C43F001C9B - 5d972c0dfdf282d7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Imagin.ResultViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Imagin.ResultViewController&gt;"
+                  moduleName = "Imagin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Desktop/study/ios/Imagin/Imagin/ResultViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "2531">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -7,15 +7,21 @@
 
 import UIKit
 
-//заглушка на ответ от сервера
-let colorsFromServer = [UIColor(red: 226/255, green: 79/255, blue: 28/255, alpha: 1), UIColor(red: 73/255, green: 11/255, blue: 160/255, alpha: 1),UIColor(red: 176/255, green: 191/255, blue: 120/255, alpha: 1),UIColor(red: 176/255, green: 191/255, blue: 120/255, alpha: 1),UIColor(red: 176/255, green: 191/255, blue: 120/255, alpha: 1),UIColor(red: 176/255, green: 191/255, blue: 120/255, alpha: 1),UIColor(red: 176/255, green: 191/255, blue: 120/255, alpha: 1),UIColor(red: 176/255, green: 191/255, blue: 120/255, alpha: 1)]
+// "seasonType" : [color1, color2, ...]
+//var colorsFromServer: [String: [[UIColor]]] = ["winter" : nil, "summer" : nil, "autumn" : nil, "spring" : nil]
 
-let colorsForLadder = [UIColor(red: 222/255, green: 19/255, blue: 84/255, alpha: 1),
+var colorsFromServer: [String: [[UIColor]]] = [:]
+
+/*let colorsForLadder = [UIColor(red: 222/255, green: 19/255, blue: 84/255, alpha: 1),
     UIColor(red: 226/255, green: 106/255, blue: 71/255, alpha: 1),
     UIColor(red: 224/255, green: 78/255, blue: 20/255, alpha: 1),
-    UIColor(red: 224/255, green: 116/255, blue: 67/255, alpha: 1)]
+    UIColor(red: 224/255, green: 116/255, blue: 67/255, alpha: 1)]*/
 
 let seasons = ["Winter", "Autumn", "Summer", "Spring"]
+
+var currentSeason: String = "winter";
+
+var maxSizeForLadder = 0
 
 class ResultViewController: UIViewController, UIScrollViewDelegate {
 
@@ -44,6 +50,7 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
     var ladder: Ladder!;
     
     @IBOutlet weak var collectionViewBottom: NSLayoutConstraint!
+   // @IBOutlet weak var seasonsTop: NSLayoutConstraint!
     @IBOutlet weak var seasonsTop: NSLayoutConstraint!
     @IBOutlet weak var actionDescrBackgroundTop: NSLayoutConstraint!
     override func viewDidLoad() {
@@ -53,6 +60,30 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
        // scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 2)
         
 //        colors = [color1, color2, color3]
+        
+        let http: HTTPCommunication = HTTPCommunication()
+        
+      //  print("colors from server ", colorsFromServer)
+        http.getURL(URL(string: getUrl)!) {
+            [weak self] (data) -> Void in
+            let data = data as! DataFromServerGET
+            for season in data.colors.keys {
+                colorsFromServer[season] = []
+                for i in 0...data.colors[season]!.count - 1 {
+                    colorsFromServer[season]!.append([])
+                    maxSizeForLadder = max(maxSizeForLadder, data.colors[season]![i].count)
+                    for color in data.colors[season]![i] {
+                        print("color ", color)
+                        colorsFromServer[season]![i].append(UIColor(hexString: color))
+                    }
+                }
+            }
+            self!.showCollections()
+        }
+        
+        
+    }
+    func showCollections() {
         collectinViewForColors.dataSource = self
         collectinViewForColors.delegate = self
         collectionViewForSeasons.dataSource = self
@@ -67,18 +98,19 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         collectionViewBottom = collectinViewForColors.bottomAnchor.constraint(equalTo: colorDescr.topAnchor, constant: CGFloat(offset))
         collectionViewBottom.isActive = true
         
-        
      //   actionDescrBackgroundTop.isActive = false
       //  actionDescrBackgroundTop = actionDescrBackground.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor, constant: CGFloat(-100))
        // actionDescrBackgroundTop.isActive = true
         
-        ladder = Ladder(view: scrollView, maxSize: 6)
+        ladder = Ladder(view: scrollView, maxSize: maxSizeForLadder)
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
+        updateColorType(newSeason: currentSeason)
     }
     
     @IBAction func tapOnSeeAll(_ sender: Any) {
+        print("tap see all")
         var offset: Float
         if (seeAllwasTapped) {
             seeAllwasTapped = false
@@ -86,7 +118,7 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
             //seeAllButtonOutlet.setImage(UIImage(contentsOfFile: "topPointer.png"), for: [])
         } else {
             seeAllwasTapped = true
-            let linesCount =  Int((colorsFromServer.count - 1) / 6) + 1
+            let linesCount =  Int((collectinViewForColors.visibleCells.count - 1) / 6) + 1
             let d = (linesCount - 1) * spacing
             offset = Float(Int(Float(linesCount) * cellHeight) + d + 30)
             //seeAllButtonOutlet.setImage(UIImage(contentsOfFile: "bottomPointer.png"), for: [])
@@ -94,6 +126,13 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         collectionViewBottom.isActive = false
         collectionViewBottom = collectinViewForColors.bottomAnchor.constraint(equalTo: colorDescr.topAnchor, constant: CGFloat(offset))
         collectionViewBottom.isActive = true
+    }
+    
+    func updateColorType(newSeason: String) {
+        currentSeason = newSeason
+        colorsTitle.text = currentSeason.uppercased()
+        collectinViewForColors.reloadData()
+        // отрисовка новых cell
     }
     
 /*
@@ -180,7 +219,8 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //print("id ", collectionView.restorationIdentifier)
         if collectionView.restorationIdentifier == "colors" {
-            return colorsFromServer.count
+            print(colorsFromServer[currentSeason]!.count)
+            return colorsFromServer[currentSeason]!.count
         } else {
             return 4
         }
@@ -189,17 +229,18 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView.restorationIdentifier == "colors" {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCollectionViewCell", for: indexPath) as! ColorCollectionViewCell
-            cell.colorBackground.backgroundColor = colorsFromServer[indexPath.item]
+            cell.colorBackground.backgroundColor = colorsFromServer[currentSeason]![indexPath.item][0]
             cell.colorBackground.layer.cornerRadius = 10
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SeasonCollectionViewCell", for: indexPath) as! SeasonCollectionViewCell
             cell.label.text = seasons[indexPath.item]
             for i in 0...cell.images.count - 1 {
-                cell.images[i].backgroundColor = colorsFromServer[i]
+                cell.images[i].backgroundColor = colorsFromServer[seasons[indexPath.item].lowercased()]?[i][0]
                 cell.images[i].layer.cornerRadius = 5
                 cell.stackView.addArrangedSubview(cell.images[i])
             }
+            cell.seasonIndex = indexPath.item
             return cell
         }
     }
@@ -214,7 +255,9 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath)
         if collectionView.restorationIdentifier == "colors" {
+            let colorsForLadder = colorsFromServer[currentSeason]![indexPath.item]
             if (!wasTapOnCOlor) {
                 wasTapOnCOlor = true
                 for cell in collectionView.visibleCells as! [ColorCollectionViewCell] {
@@ -243,7 +286,8 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
             }
             //seeAllButtonOutlet.sendActions(for: .touchUpInside)
         } else {
-            return
+            let cell = collectionView.cellForItem(at: indexPath) as! SeasonCollectionViewCell
+            updateColorType(newSeason: (cell.label.text!.lowercased()))
         }
     }
     
@@ -263,6 +307,7 @@ class Ladder {
     }
     
     func show(collectionView: UICollectionView, indexPath: IndexPath, colors: [UIColor]) {
+        let colorsForLadder = colorsFromServer[currentSeason]![indexPath.item]
         let cell = collectionView.cellForItem(at: indexPath)!
         let height = cell.frame.height / 3
         let space = height * 2 / 3
@@ -271,11 +316,11 @@ class Ladder {
         let index = indexPath.item % 6
         if index < 3 {
             let x = cell.frame.minX
-            var y = cell.frame.minY
+            var y = cell.frame.minY - space
             for i in 0...colors.count - 1 {
-                let maxX = collectionView.cellForItem(at: [0, min(index + i + 1, 5)])!.frame.maxX
+                let maxX = collectionView.cellForItem(at: [0, min(index + i, 5)])!.frame.maxX
                 let newImageView = images[i]
-                print("x ", x, "y ", y)
+               // print("x ", x, "y ", y)
                 newImageView.frame = CGRect(x: offsetX + x, y: offsetY + y + space, width: maxX - x, height: height)
                 newImageView.layer.cornerRadius = 10
                 newImageView.backgroundColor = colorsForLadder[i]
@@ -283,10 +328,10 @@ class Ladder {
                 y = y + space
             }
         } else {
-            var y = cell.frame.minY
+            var y = cell.frame.minY - space
             let maxX = cell.frame.maxX
             for i in 0...colorsForLadder.count - 1 {
-                let x = collectionView.cellForItem(at: [0, max(0, index - i - 1)])!.frame.minX
+                let x = collectionView.cellForItem(at: [0, max(0, index - i)])!.frame.minX
                 let newImageView = images[i]
                 //print("x ", x, "y ", y)
                 newImageView.frame = CGRect(x: offsetX + x, y: offsetY + y + space, width: maxX - x, height: height)
@@ -307,5 +352,35 @@ class Ladder {
             image.isHidden = true
         }
         visibleImagesCount = 0
+    }
+}
+
+
+extension UIColor {
+    convenience init(hexString: String, alpha: CGFloat = 1.0) {
+        let hexString: String = hexString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        let scanner = Scanner(string: hexString)
+        if (hexString.hasPrefix("#")) {
+            scanner.scanLocation = 1
+        }
+        var color: UInt32 = 0
+        scanner.scanHexInt32(&color)
+        let mask = 0x000000FF
+        let r = Int(color >> 16) & mask
+        let g = Int(color >> 8) & mask
+        let b = Int(color) & mask
+        let red   = CGFloat(r) / 255.0
+        let green = CGFloat(g) / 255.0
+        let blue  = CGFloat(b) / 255.0
+        self.init(red:red, green:green, blue:blue, alpha:alpha)
+    }
+    func toHexString() -> String {
+        var r:CGFloat = 0
+        var g:CGFloat = 0
+        var b:CGFloat = 0
+        var a:CGFloat = 0
+        getRed(&r, green: &g, blue: &b, alpha: &a)
+        let rgb:Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
+        return String(format:"#%06x", rgb)
     }
 }

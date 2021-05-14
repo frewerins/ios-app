@@ -10,10 +10,12 @@ import UIKit
 
 class User {
     var photo: UIImage!;
-    var coloType: Int = 0;
+    var colorType: Int = 0;
     var responseStatusCode: Int = 200;
 }
 
+let postUrl = "https://imagin.neurotone.net/api/v1/image/process"
+let getUrl = "https://imagin.neurotone.net/api/v1/color-type/list"
 var user = User()
 
 class PhotoController: UIViewController {
@@ -38,6 +40,7 @@ class PhotoController: UIViewController {
             self.nextPage.isHidden = true
         }, completion: { _ in })
         self.nextController = storyboard!.instantiateViewController(identifier: "ResultViewController")
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
@@ -105,12 +108,23 @@ class PhotoController: UIViewController {
         }, completion: { _ in })
     }
     
+    
     func sendPhoto() {
         beforeSeinding()
-        let http: HTTPCommunication = HTTPCommunication() {
+        let http: HTTPCommunication = HTTPCommunication()
+       // let imageData = user.photo.pngData()
+       // let imageBase64 = imageData?.base64EncodedString()
+       // print(imageBase64)
+     //   let data: [String: Any] = [
+      //      "file": imageBase64
+     //   ]
+       // let requestFactory = RequestFactory()
+        //let data = requestFactory.createRequest()
+        http.postURL(URL(string: postUrl)!) {
             [weak self] (data) -> Void in
-                
+            let data = data as! DataFromServerPOST
             if data != nil {
+                user.colorType = data.colorType
                 self?.activityView.stopAnimating()
                 UIView.transition(with: self!.nextPage, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
                   //  self?.nextPage.isHidden = false
@@ -147,17 +161,6 @@ class PhotoController: UIViewController {
                 
             }
         }
-        let url: URL = URL(string: "https://imagin.neurotone.net/api/v1/image/process")!
-       // let imageData = user.photo.pngData()
-       // let imageBase64 = imageData?.base64EncodedString()
-       // print(imageBase64)
-     //   let data: [String: Any] = [
-      //      "file": imageBase64
-     //   ]
-       // let requestFactory = RequestFactory()
-        //let data = requestFactory.createRequest()
-        
-        http.postURL(url)
     }
 }
 
@@ -196,4 +199,3 @@ extension PhotoController: UIImagePickerControllerDelegate, UINavigationControll
     }
     
 }
-

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iJD-35-jZQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rSn-xk-wPc">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -14,7 +14,7 @@
         <!--Photo Controller-->
         <scene sceneID="xbv-wk-Coa">
             <objects>
-                <viewController storyboardIdentifier="PhotoController" id="0Zb-HJ-mZB" customClass="PhotoController" customModule="Imagin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0Zb-HJ-mZB" customClass="PhotoController" customModule="Imagin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WL7-V5-iDg">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -172,8 +172,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color type: WINTER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7q-Jv-tFS">
-                                        <rect key="frame" x="236.66666666666669" y="65" width="154.66666666666669" height="20.333333333333329"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RESULTS ARE READY!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7q-Jv-tFS">
+                                        <rect key="frame" x="236.66666666666663" y="65" width="173" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <color key="textColor" red="0.211766392" green="0.2117616534" blue="0.21176484230000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -397,7 +397,7 @@
                         <outlet property="photoFromUser" destination="0LT-Rz-GBc" id="ucQ-ff-g6c"/>
                         <outlet property="scrollView" destination="KwZ-9Z-XLf" id="ViN-8b-mTP"/>
                         <outlet property="seasonsTitle" destination="Bqe-GX-L1Y" id="cPl-qO-OLX"/>
-                        <outlet property="seasonsTop" destination="xIN-PW-fcH" id="hqy-gW-g04"/>
+                        <outlet property="seasonsTop" destination="V6V-w5-UYX" id="mp3-U7-U7c"/>
                         <outlet property="seeAllButtonOutlet" destination="WTU-M3-Wec" id="6IN-Sy-t4L"/>
                     </connections>
                 </viewController>
@@ -422,7 +422,7 @@
                         <action selector="tapColor3:" destination="rSn-xk-wPc" id="pfu-ld-hPc"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="iEB-uY-H6R">
+                <tapGestureRecognizer enabled="NO" id="iEB-uY-H6R">
                     <connections>
                         <action selector="tapOnColor:" destination="rSn-xk-wPc" id="Ct9-gc-1FB"/>
                     </connections>
@@ -511,7 +511,7 @@
         <!--Test View Controller-->
         <scene sceneID="yRh-Cd-w1i">
             <objects>
-                <viewController storyboardIdentifier="TestViewController" id="QQ8-GH-YYI" customClass="TestViewController" customModule="Imagin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TestViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QQ8-GH-YYI" customClass="TestViewController" customModule="Imagin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RiP-r4-QsJ">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -13,4 +13,5 @@ class SeasonCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var stackView: UIStackView!
     let images = [UIImageView(), UIImageView(), UIImageView(), UIImageView()];
+    var seasonIndex: Int = 0;
 }

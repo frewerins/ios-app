@@ -1,16 +1,18 @@
 import UIKit
 
 class HTTPCommunication: NSObject {
-    var completionHandler: ((DataFromServer?) -> Void)!;
+    var completionHandler: ((DataFromServer?) -> Void)?;
     var taskDowload: URLSessionDownloadTask!;
     let request = RequestFactory();
+    var currentRequest = "POST"
     
-    init(completionHandler: @escaping((DataFromServer?) -> Void)) {
+   // init() {
+      //  self.completionHandler = completionHandler
+    //}
+    
+    func postURL(_ url: URL, completionHandler: @escaping ((DataFromServer?) -> Void)) {
         self.completionHandler = completionHandler
-    }
-    
-    func postURL(_ url: URL) {
-       // self.completionHandler = completionHandler
+        currentRequest = "POST"
         
         var request: URLRequest = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -19,6 +21,26 @@ class HTTPCommunication: NSObject {
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+       let session: URLSession = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
+       // let session: URLSession = URLSession.shared
+        
+        taskDowload = session.downloadTask(with: request)
+        let task: URLSessionDataTask = session.dataTask(with: request)
+        task.resume()
+    }
+    
+    func getURL(_ url: URL, completionHandler: @escaping ((DataFromServer?) -> Void)) {
+        self.completionHandler = completionHandler
+       // self.completionHandler = completionHandler
+        currentRequest = "GET"
+        var request: URLRequest = URLRequest(url: url)
+        request.httpMethod = "GET"
+       // request.httpBody = self.request.createRequest()!
+        //print("http body: ", self.request.createRequest()!)
+        
+      //  request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+       // request.addValue("application/json", forHTTPHeaderField: "Accept")
         
        let session: URLSession = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
        // let session: URLSession = URLSession.shared
@@ -36,7 +58,7 @@ extension HTTPCommunication: URLSessionDownloadDelegate {
         do {
                 let data: Data = try Data(contentsOf: location)
                 DispatchQueue.main.async(execute: {
-                    self.completionHandler(self.request.parseResponse(data: data))
+                    self.completionHandler!(self.request.parseResponse(data: data, currentRequest: self.currentRequest))
                 })
             } catch {
                 print("Can't get data from location.")
@@ -58,7 +80,7 @@ extension HTTPCommunication: URLSessionDataDelegate {
             taskDowload.resume()
         } else {
             DispatchQueue.main.async(execute: {
-                self.completionHandler(nil)
+                self.completionHandler!(nil)
             })
         }
     }
@@ -80,11 +102,19 @@ class RequestFactory {
         }
     }
     
-    func parseResponse(data: Data) -> DataFromServer? {
+    func parseResponse(data: Data, currentRequest: String) -> DataFromServer? {
+        if currentRequest == "POST" {
+            return parsePOSTResponse(data: data)
+        } else {
+            return parseGETResponse(data: data)
+        }
+    }
+    
+    func parsePOSTResponse(data: Data) -> DataFromServer? {
         guard let json = String(data: data, encoding: String.Encoding.utf8) else { print("Invalid json")
             return nil
         }
-        print("JSON from server: ", json)
+       // print("JSON from server: ", json)
         do {
             let jsonObjectAny: Any = try JSONSerialization.jsonObject(with: data, options: [])
             guard
@@ -100,7 +130,34 @@ class RequestFactory {
 
             let decodedImage:UIImage = UIImage(data: dataDecoded as Data)!
 
-            let data = DataFromServer(file: decodedImage, colorType: colorType, photoQuality: photoQuality)
+            let data = DataFromServerPOST(file: decodedImage, colorType: colorType, photoQuality: photoQuality)
+            return data
+        } catch {
+            print("Can't serialize data.")
+            return nil
+        }
+    }
+    
+    func parseGETResponse(data: Data) -> DataFromServer? {
+        guard let json = String(data: data, encoding: String.Encoding.utf8) else { print("Invalid json")
+            return nil
+        }
+       // print("JSON from server: ", json)
+        do {
+            let jsonObjectAny: Any = try JSONSerialization.jsonObject(with: data, options: [])
+            var colors: [String: [[String]]] = [:]
+            let jsonObject = jsonObjectAny as! [[String: Any]]
+            for season in jsonObject {
+                let seasonType = season["type"] as! String
+                let possibleColors = season["possible_colors"] as! [[String: Any]]
+                colors[seasonType] = []
+                for j in possibleColors {
+                    let hexValues = j["hex_values"] as! [String]
+                    colors[seasonType]?.append(hexValues)
+                }
+            }
+
+            let data = DataFromServerGET(colors: colors)
             return data
         } catch {
             print("Can't serialize data.")
@@ -109,7 +166,9 @@ class RequestFactory {
     }
 }
 
-struct DataFromServer {
+class DataFromServer {}
+
+class DataFromServerPOST: DataFromServer {
     let file: UIImage;
     let colorType: Int;
     let photoQuality: Int;
@@ -117,5 +176,12 @@ struct DataFromServer {
         self.file = file
         self.colorType = colorType
         self.photoQuality = photoQuality
+    }
+}
+
+class DataFromServerGET: DataFromServer {
+    var colors: [String: [[String]]]
+    init(colors: [String: [[String]]]) {
+        self.colors = colors
     }
 }

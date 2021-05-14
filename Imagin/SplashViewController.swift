@@ -16,7 +16,7 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.isNavigationBarHidden = true
-        let nextController = storyboard!.instantiateViewController(identifier: "TestViewController")
+       // let nextController = storyboard!.instantiateViewController(identifier: "TestViewController")
         logoImage.alpha = 0
         UIView.animate(withDuration: 1.5, animations: {
             self.logoImage.alpha = 1
@@ -24,12 +24,20 @@ class SplashViewController: UIViewController {
         UIView.animate(withDuration: 2.5) {
             self.progress.setProgress(1.0, animated: true)
         }
+        let firstTime = UserDefaults.standard.object(forKey: "firstTimeOpened") as? Bool;
+        let viewId: String
+        if firstTime == nil {
+            viewId = "TestViewController"
+        } else {
+            viewId = "PhotoController"
+        }
+        let nextController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: viewId)
+        UserDefaults.standard.set(false, forKey: "firstTimeOpened")
         Timer.scheduledTimer(withTimeInterval: 2.6, repeats: false) { (_) in
             self.navigationController!.pushViewController(nextController, animated: true)
         }
     
     }
-    
 
 }
 
