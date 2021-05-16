@@ -12,13 +12,14 @@ class User {
     var photo: UIImage!;
     var colorType: Int = 0;
     var responseStatusCode: Int = 200;
+    var errorMessage: String = "";
 }
 
 let postUrl = "https://imagin.neurotone.net/api/v1/image/process"
 let getUrl = "https://imagin.neurotone.net/api/v1/color-type/list"
 var user = User()
 
-class PhotoController: UIViewController {
+class PhotoController: ViewController {
     //var photo: UIImage!
     let imagePicker = UIImagePickerController()
     var nextController = UIViewController()
@@ -29,7 +30,6 @@ class PhotoController: UIViewController {
     @IBOutlet weak var actionDescr: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
         AppUtility.lockOrientation(.portrait)
         
         imagePicker.delegate = self
@@ -43,7 +43,9 @@ class PhotoController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.setHidesBackButton(true, animated: false)
+
     }
     @IBAction func sendPhotoAction(_ sender: Any) {
         sendPhoto()
@@ -111,7 +113,6 @@ class PhotoController: UIViewController {
     
     func sendPhoto() {
         beforeSeinding()
-        let http: HTTPCommunication = HTTPCommunication()
        // let imageData = user.photo.pngData()
        // let imageBase64 = imageData?.base64EncodedString()
        // print(imageBase64)
@@ -120,47 +121,57 @@ class PhotoController: UIViewController {
      //   ]
        // let requestFactory = RequestFactory()
         //let data = requestFactory.createRequest()
-        http.postURL(URL(string: postUrl)!) {
-            [weak self] (data) -> Void in
-            let data = data as! DataFromServerPOST
-            if data != nil {
-                user.colorType = data.colorType
+            let http: HTTPCommunication = HTTPCommunication()
+            http.postURL(URL(string: postUrl)!) {
+                [weak self] (data) -> Void in
                 self?.activityView.stopAnimating()
-                UIView.transition(with: self!.nextPage, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
+                if data != nil {
+                    let data = data as! DataFromServerPOST
+                    print("user colortype: ", data.colorType)
+                    print("quality ", data.photoQuality)
+                    if data.photoQuality < 70 {
+                        user.errorMessage = "Сan't recognize your face. Take another photo"
+                        self!.printIfError()
+                    } else {
+                    user.colorType = data.colorType
+                    UIView.transition(with: self!.nextPage, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
                   //  self?.nextPage.isHidden = false
-                }, completion: { _ in })
+                    }, completion: { _ in })
                 
-                let attributes: [NSAttributedString.Key: Any] = [
+                    let attributes: [NSAttributedString.Key: Any] = [
                     .foregroundColor: UIColor.gray
-                ]
+                    ]
                 
-                let newTitle = NSAttributedString(string: "Upload", attributes: attributes)
+                    let newTitle = NSAttributedString(string: "Upload", attributes: attributes)
                 
-                UIView.transition(with: self!.nextPage, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
+                    UIView.transition(with: self!.nextPage, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
                     //let newTitle = self.nextPage.currentAttributedTitle
                     //newTitle?.setValue("Uploading", forKey: "string")
-                    self!.nextPage.setAttributedTitle(newTitle, for: .normal)
-                    self!.nextPage.isEnabled = true
-                    self!.addPhotoButton.isHidden = false
-                }, completion: { _ in })
-                
-                self!.navigationController!.pushViewController(self!.nextController, animated: true)
-            } else {
-                self?.activityView.stopAnimating()
-                let attributes: [NSAttributedString.Key: Any] = [
-                    .foregroundColor: UIColor.red
-                ]
-                let newTitle = NSAttributedString(string: "Something's wrong. Please try again", attributes: attributes)
-                
-                UIView.transition(with: self!.nextPage, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
                         self!.nextPage.setAttributedTitle(newTitle, for: .normal)
-                }, completion: { _ in })
-                UIView.transition(with: self!.addPhotoButton, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
-                    self!.addPhotoButton.isHidden = false
-                }, completion: { _ in })
+                        self!.nextPage.isEnabled = true
+                        self!.addPhotoButton.isHidden = false
+                    }, completion: { _ in })
                 
+                    self!.navigationController!.pushViewController(self!.nextController, animated: true)
+                    }
+                } else {
+                    self!.printIfError()
+                }
             }
-        }
+    }
+    
+    func printIfError() {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.red
+        ]
+        let newTitle = NSAttributedString(string: user.errorMessage, attributes: attributes)
+
+        UIView.transition(with: nextPage, duration: 0.4, options: .transitionCrossDissolve, animations: { [self]() -> Void in
+            nextPage.setAttributedTitle(newTitle, for: .normal)
+        }, completion: { _ in })
+        UIView.transition(with: addPhotoButton, duration: 0.4, options: .transitionCrossDissolve, animations: {() -> Void in
+            self.addPhotoButton.isHidden = false
+        }, completion: { _ in })
     }
 }
 

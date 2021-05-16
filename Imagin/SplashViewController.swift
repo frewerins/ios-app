@@ -21,7 +21,7 @@ class SplashViewController: UIViewController {
         UIView.animate(withDuration: 1.5, animations: {
             self.logoImage.alpha = 1
         })
-        UIView.animate(withDuration: 2.5) {
+        UIView.animate(withDuration: 2.5) { [self] in
             self.progress.setProgress(1.0, animated: true)
         }
         let firstTime = UserDefaults.standard.object(forKey: "firstTimeOpened") as? Bool;

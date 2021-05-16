@@ -17,6 +17,7 @@ class HTTPCommunication: NSObject {
         var request: URLRequest = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = self.request.createRequest()!
+        request.addValue("close", forHTTPHeaderField: "Connection")
         //print("http body: ", self.request.createRequest()!)
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -28,6 +29,7 @@ class HTTPCommunication: NSObject {
         taskDowload = session.downloadTask(with: request)
         let task: URLSessionDataTask = session.dataTask(with: request)
         task.resume()
+        print("end of postUrl")
     }
     
     func getURL(_ url: URL, completionHandler: @escaping ((DataFromServer?) -> Void)) {
@@ -54,7 +56,7 @@ class HTTPCommunication: NSObject {
 extension HTTPCommunication: URLSessionDownloadDelegate {
 
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        print("another delegate")
+        print("finish dowload")
         do {
                 let data: Data = try Data(contentsOf: location)
                 DispatchQueue.main.async(execute: {
@@ -79,13 +81,32 @@ extension HTTPCommunication: URLSessionDataDelegate {
         if (statusCode == 200) {
             taskDowload.resume()
         } else {
+            user.errorMessage = "Something's wrong with server. Please try again"
             DispatchQueue.main.async(execute: {
                 self.completionHandler!(nil)
             })
         }
     }
 }
+extension HTTPCommunication: URLSessionTaskDelegate {
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        if error != nil {
+        print("EERRRROOOOOOOOR   ", error)
+        let errorCode = (error as! NSError).code
+        print("error code", errorCode)
+        if errorCode == -1009 {
+            user.errorMessage = "No Internet connection"
 
+        } else {
+            user.errorMessage = (error as! NSError).localizedDescription
+        }
+        DispatchQueue.main.async(execute: {
+            self.completionHandler!(nil)
+        })
+    }
+    }
+    
+}
 
 class RequestFactory {
     func createRequest() -> Data? {

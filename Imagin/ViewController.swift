@@ -11,7 +11,26 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addImageToNavBar()
+        self.navigationItem.title = ""
         // Do any additional setup after loading the view.
+    }
+    
+    func addImageToNavBar() {
+        if let navController = navigationController {
+            let imageLogo = UIImage(named: "IMAGIN")
+            let withNavBar = navController.navigationBar.frame.width
+            let heightNavBar = navController.navigationBar.frame.height
+            
+            let withForView = 0.165 * withNavBar
+            let logoContainer = UIView(frame: CGRect(x: 0, y: 0, width: withForView, height: heightNavBar))
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: withForView, height: heightNavBar))
+            imageView.image = imageLogo
+            imageView.contentMode = .scaleAspectFit
+            logoContainer.addSubview(imageView)
+            navigationItem.titleView = logoContainer
+            
+        }
     }
 
 
@@ -34,6 +53,5 @@ struct AppUtility {
         UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
         UINavigationController.attemptRotationToDeviceOrientation()
     }
-
 }
 

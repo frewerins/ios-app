@@ -23,7 +23,7 @@ var currentSeason: String = "winter";
 
 var maxSizeForLadder = 0
 
-class ResultViewController: UIViewController, UIScrollViewDelegate {
+class ResultViewController: ViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var photoFromUser: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -73,14 +73,12 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
                     colorsFromServer[season]!.append([])
                     maxSizeForLadder = max(maxSizeForLadder, data.colors[season]![i].count)
                     for color in data.colors[season]![i] {
-                        print("color ", color)
                         colorsFromServer[season]![i].append(UIColor(hexString: color))
                     }
                 }
             }
             self!.showCollections()
         }
-        
         
     }
     func showCollections() {
@@ -105,23 +103,24 @@ class ResultViewController: UIViewController, UIScrollViewDelegate {
         ladder = Ladder(view: scrollView, maxSize: maxSizeForLadder)
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = false
+        // self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.setHidesBackButton(false, animated: false)
         updateColorType(newSeason: seasons[user.colorType].lowercased())
+        photoFromUser.image = user.photo
     }
     
     @IBAction func tapOnSeeAll(_ sender: Any) {
-        print("tap see all")
         var offset: Float
         if (seeAllwasTapped) {
             seeAllwasTapped = false
             offset = cellHeight + 30
-            //seeAllButtonOutlet.setImage(UIImage(contentsOfFile: "topPointer.png"), for: [])
+            seeAllButtonOutlet.setImage(UIImage(named: "bottomPointer"), for: [])
         } else {
             seeAllwasTapped = true
             let linesCount =  Int((collectinViewForColors.visibleCells.count - 1) / 6) + 1
             let d = (linesCount - 1) * spacing
             offset = Float(Int(Float(linesCount) * cellHeight) + d + 30)
-            //seeAllButtonOutlet.setImage(UIImage(contentsOfFile: "bottomPointer.png"), for: [])
+            seeAllButtonOutlet.setImage(UIImage(named: "topPointer"), for: [])
         }
         collectionViewBottom.isActive = false
         collectionViewBottom = collectinViewForColors.bottomAnchor.constraint(equalTo: colorDescr.topAnchor, constant: CGFloat(offset))
