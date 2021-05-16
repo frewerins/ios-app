@@ -81,7 +81,7 @@ extension HTTPCommunication: URLSessionDataDelegate {
         if (statusCode == 200) {
             taskDowload.resume()
         } else {
-            user.errorMessage = "Something's wrong with server. Please try again"
+            user.errorMessage = "Server error: " + String(statusCode) + ". Please try again"
             DispatchQueue.main.async(execute: {
                 self.completionHandler!(nil)
             })
