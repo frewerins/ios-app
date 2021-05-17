@@ -79,7 +79,7 @@
                                 <color key="textColor" red="0.211766392" green="0.2117616534" blue="0.21176484230000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Тake a photo as shown in the example" translatesAutoresizingMaskIntoConstraints="NO" id="J9r-j3-OCn">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Тake a photo as shown in the example" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9r-j3-OCn">
                                 <rect key="frame" x="69.666666666666657" y="155.66666666666666" width="296.66666666666674" height="42.666666666666657"/>
                                 <color key="backgroundColor" red="0.76644682880000004" green="0.77616006140000005" blue="0.96865111589999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="textColor" red="0.211766392" green="0.2117616534" blue="0.21176484230000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -157,7 +157,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Take a look at the colors we have chosen for you" translatesAutoresizingMaskIntoConstraints="NO" id="aH5-Tq-Sba">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Take a look at the colors we have chosen for you" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aH5-Tq-Sba">
                                         <rect key="frame" x="236.66666666666663" y="102.66666666666666" width="145" height="112.33333333333334"/>
                                         <color key="backgroundColor" red="0.76644682880000004" green="0.77616006140000005" blue="0.96865111589999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="textColor" red="0.211766392" green="0.2117616534" blue="0.21176484230000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -172,7 +172,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RESULTS ARE READY!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7q-Jv-tFS">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RESULTS ARE READY!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7q-Jv-tFS">
                                         <rect key="frame" x="236.66666666666663" y="65" width="173" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <color key="textColor" red="0.211766392" green="0.2117616534" blue="0.21176484230000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -310,13 +310,13 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OUR RECOMMENDATIONS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUe-2t-szy">
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OUR RECOMMENDATIONS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUe-2t-szy">
                                         <rect key="frame" x="38.333333333333329" y="712.33333333333337" width="209.33333333333337" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <color key="textColor" red="0.211766392" green="0.2117616534" blue="0.21176484230000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Take a look at the colors we have chosen for you" translatesAutoresizingMaskIntoConstraints="NO" id="crH-87-PZK">
+                                    <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Take a look at the colors we have chosen for you" translatesAutoresizingMaskIntoConstraints="NO" id="crH-87-PZK">
                                         <rect key="frame" x="38.333333333333343" y="763.33333333333337" width="351.33333333333326" height="71"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="crH-87-PZK" secondAttribute="height" multiplier="351:71" id="NmE-t4-cKw"/>

@@ -19,6 +19,7 @@
 		117CE78E2602EB7700F9582B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117CE78D2602EB7700F9582B /* ResultViewController.swift */; };
 		119DECDE264C4C0E00BE0E20 /* SeasonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119DECDD264C4C0E00BE0E20 /* SeasonCollectionViewCell.swift */; };
 		119DECE1264C4C6700BE0E20 /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119DECE0264C4C6700BE0E20 /* ColorCollectionViewCell.swift */; };
+		11D50F4B2651875F00999380 /* ExportOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11D50F4A2651875F00999380 /* ExportOptions.plist */; };
 		11E0FFD3261751A4001EF67D /* HTTPCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E0FFD2261751A4001EF67D /* HTTPCommunication.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		117CE78D2602EB7700F9582B /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		119DECDD264C4C0E00BE0E20 /* SeasonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCollectionViewCell.swift; sourceTree = "<group>"; };
 		119DECE0264C4C6700BE0E20 /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		11D50F4A2651875F00999380 /* ExportOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ExportOptions.plist; sourceTree = "<group>"; };
 		11E0FFD2261751A4001EF67D /* HTTPCommunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPCommunication.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,6 +86,7 @@
 				112F400F262C23F100FD27CD /* SplashViewController.swift */,
 				119DECDD264C4C0E00BE0E20 /* SeasonCollectionViewCell.swift */,
 				119DECE0264C4C6700BE0E20 /* ColorCollectionViewCell.swift */,
+				11D50F4A2651875F00999380 /* ExportOptions.plist */,
 			);
 			path = Imagin;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				11061BD825F27F92008327DD /* LaunchScreen.storyboard in Resources */,
 				11061BD525F27F92008327DD /* Assets.xcassets in Resources */,
 				11061BD325F27F90008327DD /* Main.storyboard in Resources */,
+				11D50F4B2651875F00999380 /* ExportOptions.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +201,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -249,6 +254,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -258,6 +264,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -303,6 +310,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -314,7 +322,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = Y65GN5ND4U;
 				INFOPLIST_FILE = Imagin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -323,8 +334,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Imagin.Imagin123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -333,7 +346,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = Y65GN5ND4U;
 				INFOPLIST_FILE = Imagin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -342,8 +358,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Imagin.Imagin123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
