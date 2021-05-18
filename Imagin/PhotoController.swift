@@ -129,7 +129,7 @@ class PhotoController: ViewController {
                     let data = data as! DataFromServerPOST
                     print("user colortype: ", data.colorType)
                     print("quality ", data.photoQuality)
-                    if data.photoQuality < 70 {
+                    if data.photoQuality == 0 {
                         user.errorMessage = "Сan't recognize your face. Take another photo"
                         self!.printIfError()
                     } else {
