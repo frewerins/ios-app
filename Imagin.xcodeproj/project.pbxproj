@@ -17,6 +17,8 @@
 		112F4010262C23F100FD27CD /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112F400F262C23F100FD27CD /* SplashViewController.swift */; };
 		1174AE5D262B34850027084C /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1174AE5C262B34850027084C /* TestViewController.swift */; };
 		117CE78E2602EB7700F9582B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117CE78D2602EB7700F9582B /* ResultViewController.swift */; };
+		1186FA22269B194000FD9CDE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186FA21269B194000FD9CDE /* LoginViewController.swift */; };
+		1186FA26269B580C00FD9CDE /* RegistationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1186FA25269B580C00FD9CDE /* RegistationViewController.swift */; };
 		119DECDE264C4C0E00BE0E20 /* SeasonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119DECDD264C4C0E00BE0E20 /* SeasonCollectionViewCell.swift */; };
 		119DECE1264C4C6700BE0E20 /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119DECE0264C4C6700BE0E20 /* ColorCollectionViewCell.swift */; };
 		11D50F4B2651875F00999380 /* ExportOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11D50F4A2651875F00999380 /* ExportOptions.plist */; };
@@ -36,6 +38,8 @@
 		112F400F262C23F100FD27CD /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		1174AE5C262B34850027084C /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		117CE78D2602EB7700F9582B /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		1186FA21269B194000FD9CDE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1186FA25269B580C00FD9CDE /* RegistationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistationViewController.swift; sourceTree = "<group>"; };
 		119DECDD264C4C0E00BE0E20 /* SeasonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCollectionViewCell.swift; sourceTree = "<group>"; };
 		119DECE0264C4C6700BE0E20 /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		11D50F4A2651875F00999380 /* ExportOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ExportOptions.plist; sourceTree = "<group>"; };
@@ -72,11 +76,11 @@
 		11061BCA25F27F90008327DD /* Imagin */ = {
 			isa = PBXGroup;
 			children = (
+				11061BD425F27F92008327DD /* Assets.xcassets */,
 				11061BCB25F27F90008327DD /* AppDelegate.swift */,
 				11061BCD25F27F90008327DD /* SceneDelegate.swift */,
 				11061BCF25F27F90008327DD /* ViewController.swift */,
 				11061BD125F27F90008327DD /* Main.storyboard */,
-				11061BD425F27F92008327DD /* Assets.xcassets */,
 				11061BD625F27F92008327DD /* LaunchScreen.storyboard */,
 				11061BD925F27F92008327DD /* Info.plist */,
 				11061BE025F283C9008327DD /* PhotoController.swift */,
@@ -87,6 +91,8 @@
 				119DECDD264C4C0E00BE0E20 /* SeasonCollectionViewCell.swift */,
 				119DECE0264C4C6700BE0E20 /* ColorCollectionViewCell.swift */,
 				11D50F4A2651875F00999380 /* ExportOptions.plist */,
+				1186FA21269B194000FD9CDE /* LoginViewController.swift */,
+				1186FA25269B580C00FD9CDE /* RegistationViewController.swift */,
 			);
 			path = Imagin;
 			sourceTree = "<group>";
@@ -168,10 +174,12 @@
 				112F4010262C23F100FD27CD /* SplashViewController.swift in Sources */,
 				119DECDE264C4C0E00BE0E20 /* SeasonCollectionViewCell.swift in Sources */,
 				119DECE1264C4C6700BE0E20 /* ColorCollectionViewCell.swift in Sources */,
+				1186FA26269B580C00FD9CDE /* RegistationViewController.swift in Sources */,
 				117CE78E2602EB7700F9582B /* ResultViewController.swift in Sources */,
 				11061BE125F283C9008327DD /* PhotoController.swift in Sources */,
 				11061BCE25F27F90008327DD /* SceneDelegate.swift in Sources */,
 				1174AE5D262B34850027084C /* TestViewController.swift in Sources */,
+				1186FA22269B194000FD9CDE /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

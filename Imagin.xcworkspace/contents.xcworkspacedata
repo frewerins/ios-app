@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/user/Desktop/study/ios/Imagin/Imagin/Preview.storyboard">
+   </FileRef>
+   <FileRef
       location = "group:Imagin.xcodeproj">
    </FileRef>
    <FileRef

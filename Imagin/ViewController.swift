@@ -7,11 +7,50 @@
 
 import UIKit
 
+
+let screenHeight = UIScreen.main.bounds.height
+let screenWidth = UIScreen.main.bounds.width
+let buttonHeight = 50 * screenHeight / 816
+let buttonWidth = 221 * buttonHeight / 50
+
+
+extension UIColor {
+    static let customGrayColor: UIColor = UIColor(named: "customGray")!
+    static let customBlueColor: UIColor = UIColor(named: "customBlue")!
+    static let customBackgroundColor: UIColor = UIColor(named: "customBackground")!
+    static let customBlueHoverColor: UIColor = UIColor(named: "customBlueHover")!
+}
+
+
+func CustomizeGrayButton(button: UIButton) {
+    button.setTitleColor(UIColor.customGrayColor, for: .normal)
+}
+
+func CustomizeBlueButton(button: UIButton) {
+    button.setTitleColor(UIColor.white, for: .normal)
+    button.frame.size = CGSize(width: buttonWidth, height: buttonHeight)
+    //button.layer.cornerRadius = 10
+    button.setBackgroundImage(UIImage(named: "addButtonBackground"), for: .normal)
+    //button.backgroundColor = UIColor.customBlueColor
+    //button.backgroundColor.
+}
+
+func CustomizeTextField(field: UITextField) {
+    field.layer.cornerRadius = 8
+    field.layer.borderWidth = 1
+    field.layer.borderColor = UIColor.customBlueColor.cgColor
+    field.textColor = UIColor.customGrayColor
+    field.addConstraint(field.heightAnchor.constraint(equalToConstant: buttonHeight))
+    field.addConstraint(field.widthAnchor.constraint(equalToConstant: screenWidth * 302 / 375))
+    field.clearButtonMode = .unlessEditing
+}
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         addImageToNavBar()
+        print("ded kek")
         self.navigationItem.title = ""
         // Do any additional setup after loading the view.
     }
@@ -30,6 +69,8 @@ class ViewController: UIViewController {
             logoContainer.addSubview(imageView)
             navigationItem.titleView = logoContainer
             
+        } else {
+            print("нет навбара")
         }
     }
 

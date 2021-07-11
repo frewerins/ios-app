@@ -270,7 +270,7 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
                 if (ladder.images[ladder.visibleImagesCount - 1].frame.maxY > collectinViewForColors.frame.maxY) {
                 seasonsTop.isActive = false
                 seasonsTop = seasonsTitle.topAnchor.constraint(equalTo: ladder.images[ladder.visibleImagesCount - 1].bottomAnchor, constant: 30)
-                    seasonsTop.isActive = true
+                seasonsTop.isActive = true
                 }
             } else {
                 wasTapOnCOlor = false
